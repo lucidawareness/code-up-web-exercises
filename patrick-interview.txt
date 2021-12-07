@@ -1,0 +1,27 @@
+Patrick's Interview
+
+-What draws you to coding and web development as a career?
+
+	A: Learned coding on Udemy led to wanting to create apps for games and business ideas.
+
+-What are your greatest strengths? Weaknesses?
+
+	A: Strengths = Learn quickly, good at math, not affraid to get hands on, experience managing people. 
+
+   	   Weaknesses = Balancing depression and anxiety.
+
+-How has your background helped prepare you for web development (technical and non-technical)?
+
+	A:Used to working in teams with people. Self learned python, swift, html, css, js, java.
+
+-Describe your dream job in web development.
+
+	A:Remote job to be with family, working on mobile apps with flutter and python.
+
+-What technologies interest you, web development/coding-related, and otherwise?
+
+	A: Flutter, Python, Swift, SQL, how DB's work. Autonomous vehicles. The best Tesla available
+
+-What online resources do you use to to get the latest info/news on technology?
+
+	A: News on FB and Google, Udemy course website newsletter.
