@@ -117,6 +117,9 @@ console.log(sample.substr(6, 6));
 
 // 3. Write some JavaScript code, that is, variables and operators, to describe the following scenarios. Do not worry about the real operations to get the values, the goal of these exercises is to understand how real world conditions can be represented with code.
 
+
+// Bullet 1 You have rented some movies for your kids: The little mermaid (for 3 days), Brother Bear (for 5 days, they love it), and Hercules (1 day, you don't know yet if they're going to like it). If price for a movie per day is $3, how much will you have to pay?
+
 let movieRentalRate = 3;
 
 let mermaidDays = 3;
@@ -130,6 +133,69 @@ let totalDays = mermaidDays + brotherBearDays + herculesDays;
 let totalPrice = totalDays * movieRentalRate;
 
 console.log("Total price for the rental movies is: $" + totalPrice);
+
+// Bullet 2 Suppose you're working as a contractor for 3 companies: Google, Amazon and Facebook, they pay you a different rate per hour. Google pays $400, Amazon $380, and Facebook $350. How much will you receive in payment for this week? You worked 10 hours for Facebook, 6 hours for Google and 4 hours for Amazon.
+
+let googleRate = 400;
+
+let amazonRate = 380;
+
+let facebookRate = 350;
+
+let googleHours = 6 ;
+
+let amazonHours = 4 ;
+
+let facebookHours = 10 ;
+
+
+let googlePay = googleRate * googleHours;
+
+let amazonPay = amazonRate * amazonHours;
+
+let facebookPay = facebookRate * facebookHours;
+
+let totalPay = googlePay + amazonPay + facebookPay;
+
+console.log("Your total pay for this week is : $" + totalPay);
+
+// Bullet 3 A student can be enrolled in a class only if the class is not full and the class schedule does not conflict with her current schedule.
+
+isClassFull = false;
+
+studentScheduleFull = false;
+
+// checks id class is full or if student schedule is full
+
+if (!isClassFull && !studentScheduleFull){
+    console.log("Student can enroll in class");
+} else {
+    console.log("Student can NOT enroll in class");
+}
+
+// Bullet 4 A product offer can be applied only if a person buys more than 2 items, and the offer has not expired. Premium members do not need to buy a specific amount of products.
+
+cartQTY = 2;
+
+expired = false;
+
+premiumMember = false;
+
+
+if (premiumMember){
+    if (expired){
+        console.log("\nOffer is expired!");
+    } else {
+        console.log("\nOffer is valid");
+    }
+} else if (cartQTY >= 2) {
+    console.log("\nOffer is valid");
+} else {
+    console.log("\nYou need at least 2 items for this Offer");
+}
+
+
+
 
 // 4. Use the following code to follow the instructions below:
 
@@ -162,16 +228,6 @@ if (password.length >= 5){
     console.log("Password length is: NOT valid. Must be greater than 4 characters!");
 }
 
-// checks if password includes username
-
-if (password.includes(username)){
-    usernameInPassword = true;
-    console.log("Password cannot include username!");
-} else {
-    usernameInPassword = false;
-    console.log("Password is username: Free");
-}
-
 // checks if username less than 21 char
 
 if (username.length <= 20){
@@ -182,6 +238,17 @@ if (username.length <= 20){
     console.log("Please use less than 21 characters for your username!");
 }
 
+// checks if password includes username
+
+if (password.includes(username)){
+    usernameInPassword = true;
+    console.log("Password cannot include username!");
+} else {
+    usernameInPassword = false;
+    console.log("Password is username free");
+}
+
+
 // checks if username contains whitespaces
 
 if (username.includes(" ")){
@@ -189,7 +256,7 @@ if (username.includes(" ")){
     console.log("No whitespaces in username allowed");
 } else {
     usernameWhitespace = false;
-    console.log("Username is whitespace: Free");
+    console.log("Username is whitespace free");
 }
 
 // checks if password contains whitespaces
@@ -199,5 +266,6 @@ if (password.includes(" ")){
     console.log("No whitespaces in password allowed");
 } else {
     pswdWhitespace = false;
-    console.log("Password is whitespace: Free");
+    console.log("Password is whitespace free");
 }
+
