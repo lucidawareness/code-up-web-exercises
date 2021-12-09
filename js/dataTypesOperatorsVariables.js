@@ -1,55 +1,60 @@
-var a = 1;
-var b = a++;
-var c = ++a;
+let a = 1;
+let b = a++;
+let c = ++a;
 // what is the value of a, b, and c?
 
 console.log(a + b + c);
 
-var d = "hello";
-var e = false;
+let d = "hello";
+let e = false;
 
-d++;
-e++;
+console.log(d++);
+
+console.log(e++);
 
 console.log(d);
+
 console.log(e);
 
-var perplexed; // perplexed is undefined (no value is assigned)
-perplexed + 2;
+let perplexed; // perplexed is undefined (no value is assigned)
+console.log(perplexed + 2);
 
-var price = 2.7;
+let price = 2.7;
+
+console.log(price.toFixed(2));
 
 // console.log(price.toFixed(2));
 //
-// var price = "2.7";
-//
+let price2 = "2.7";
+
 // console.log(price.toFixed(2));
+console.log(price);
 
-isNaN(0)
+console.log(isNaN(0));
 
-isNaN(1)
+console.log(isNaN(1));
 
-isNaN("")
+console.log(isNaN(""));
 
-isNaN("string")
+console.log(isNaN("string"));
 
-isNaN("0")
+console.log(isNaN("0"));
 
-isNaN("1")
+console.log(isNaN("1"));
 
-isNaN("3.145")
+console.log(isNaN("3.145"));
 
-isNaN(Number.MAX_VALUE)
+console.log(isNaN(Number.MAX_VALUE));
 
-isNaN(Infinity)
+console.log(isNaN(Infinity));
 
-isNaN("true")
+console.log(isNaN("true"));
 
-isNaN(true)
+console.log(isNaN(true));
 
-isNaN("false")
+console.log(isNaN("false"));
 
-isNaN(false)
+console.log(isNaN(false));
 
 // to illustrate why the isNaN() function is needed:
 NaN == NaN
@@ -82,8 +87,19 @@ NaN == NaN
 
 !!"0"
 
-var sample = "Hello Codeup";
+let sample = "Hello Codeup ";
 
 console.log(sample.length);
 
 console.log(sample.toUpperCase());
+
+let student = "Class";
+
+console.log(sample + student);
+
+console.log(student.indexOf("c"));
+
+console.log(student.indexOf("C"));
+
+console.log(sample.substr(6, 6))
+
