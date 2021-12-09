@@ -97,7 +97,7 @@ NaN == NaN
 
 !!"0"
 
-// 2.
+// 2.Execute the following statement in the Chrome JavaScript console and then follow the directions below.
 
 let sample = "Hello Codeup ";
 
@@ -115,7 +115,7 @@ console.log(student.indexOf("C"));
 
 console.log(sample.substr(6, 6));
 
-// 3.
+// 3. Write some JavaScript code, that is, variables and operators, to describe the following scenarios. Do not worry about the real operations to get the values, the goal of these exercises is to understand how real world conditions can be represented with code.
 
 let movieRentalRate = 3;
 
@@ -131,10 +131,16 @@ let totalPrice = totalDays * movieRentalRate;
 
 console.log("Total price for the rental movies is: $" + totalPrice);
 
-// 4.
+// 4. Use the following code to follow the instructions below:
+
+console.log("\nPassword Validation:\n");
+
+// login information
 
 let username = 'codeup';
 let password = 'notastrongpassword';
+
+// Booleans for login validation
 
 let maxPswdLength = true; // valid if true
 
@@ -150,10 +156,10 @@ let pswdWhitespace = true; // not valid if true
 // check Password Length greater than or equal to 5
 if (password.length >= 5){
     maxPswdLength = true;
-    console.log("Password length is valid");
+    console.log("Password length is: Valid");
 } else {
     maxPswdLength = false;
-    console.log("Password length is NOT valid. Must be greater than 4 characters!");
+    console.log("Password length is: NOT valid. Must be greater than 4 characters!");
 }
 
 // checks if password includes username
@@ -163,14 +169,14 @@ if (password.includes(username)){
     console.log("Password cannot include username!");
 } else {
     usernameInPassword = false;
-    console.log("Password is free of username");
+    console.log("Password is username: Free");
 }
 
 // checks if username less than 21 char
 
 if (username.length <= 20){
     maxUsernameLength = true;
-    console.log("Username length is valid");
+    console.log("Username length is: Valid");
 } else {
     maxUsernameLength = false;
     console.log("Please use less than 21 characters for your username!");
@@ -183,7 +189,7 @@ if (username.includes(" ")){
     console.log("No whitespaces in username allowed");
 } else {
     usernameWhitespace = false;
-    console.log("Username is free of whitespaces!");
+    console.log("Username is whitespace: Free");
 }
 
 // checks if password contains whitespaces
@@ -193,5 +199,5 @@ if (password.includes(" ")){
     console.log("No whitespaces in password allowed");
 } else {
     pswdWhitespace = false;
-    console.log("Password is free of white spaces");
+    console.log("Password is whitespace: Free");
 }
