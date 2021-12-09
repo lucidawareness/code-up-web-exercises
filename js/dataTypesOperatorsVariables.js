@@ -63,40 +63,6 @@ console.log(isNaN("false"));
 
 console.log(isNaN(false));
 
-// to illustrate why the isNaN() function is needed:
-
-//  //
-
-NaN == NaN
-
-!true
-
-!false
-
-!!true
-
-!!false
-
-!!0
-
-!!-0
-
-!!1
-
-!!-1
-
-!!0.1
-
-!!"hello"
-
-!!""
-
-!!''
-
-!!"false"
-
-!!"0"
-
 // 2.Execute the following statement in the Chrome JavaScript console and then follow the directions below.
 
 let sample = "Hello Codeup ";
@@ -105,15 +71,19 @@ console.log(sample.length);
 
 console.log(sample.toUpperCase());
 
-let student = "Class";
+console.log(sample.toLowerCase());
 
-console.log(sample + student);
+console.log(sample + "Students");
 
-console.log(student.indexOf("c"));
+console.log(sample + "Class");
 
-console.log(student.indexOf("C"));
+console.log(sample.indexOf("c"));
 
-console.log(sample.substr(6, 6));
+console.log(sample.indexOf("C"));
+
+console.log(sample.substring(sample.indexOf("C")),);
+
+
 
 // 3. Write some JavaScript code, that is, variables and operators, to describe the following scenarios. Do not worry about the real operations to get the values, the goal of these exercises is to understand how real world conditions can be represented with code.
 
@@ -157,7 +127,13 @@ let facebookPay = facebookRate * facebookHours;
 
 let totalPay = googlePay + amazonPay + facebookPay;
 
-console.log("Your total pay for this week is : $" + totalPay);
+console.log("Your total pay for Google is: $" + googlePay);
+
+console.log("Your total pay for Amazon is: $" +amazonPay);
+
+console.log("Your total pay for Facebook is: $" +facebookPay);
+
+console.log("Your total pay for this week is : $" + totalPay + "\n");
 
 // Bullet 3 A student can be enrolled in a class only if the class is not full and the class schedule does not conflict with her current schedule.
 
@@ -181,14 +157,21 @@ expired = false;
 
 premiumMember = false;
 
+// Boolean operator only
+// let isValid = cartQTY >=2 && !expired && premiumMember;
+//
+// console.log(isValid);
+
+// if statement
+// Check if user is premium member
 
 if (premiumMember){
-    if (expired){
+    if (expired){                           // checks if offer is expired
         console.log("\nOffer is expired!");
     } else {
         console.log("\nOffer is valid");
     }
-} else if (cartQTY >= 2) {
+} else if (cartQTY >= 2) {                  // checks if cart qty is greater than 1
     console.log("\nOffer is valid");
 } else {
     console.log("\nYou need at least 2 items for this Offer");
