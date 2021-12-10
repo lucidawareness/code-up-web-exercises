@@ -1,15 +1,15 @@
-cartQTY = 2;
+cartQTY = 5;
 
-expired = true;
+expired = false;
 
-premiumMember = false;
+premiumMember = true;
 
-// Boolean operator only
-// let isValid = cartQTY >=2 && !expired && premiumMember;
-//
-// console.log(isValid);
-//
-// if statement
+console.log("Cart QTY: " + cartQTY);
+
+console.log(`Cart QTY: ${cartQTY}`);
+console.log(`Is expired: ${expired}`);
+console.log(`Is premium member: ${premiumMember}`);
+
 // Check if user is premium member
 
 if (premiumMember){
@@ -23,4 +23,3 @@ if (premiumMember){
 } else {
     console.log("\nOffer is valid");
 }
-

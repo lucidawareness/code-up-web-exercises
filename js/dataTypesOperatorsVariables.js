@@ -171,11 +171,6 @@ expired = true;
 
 premiumMember = false;
 
-// Boolean operator only
-// let isValid = cartQTY >=2 && !expired && premiumMember;
-//
-// console.log(isValid);
-//
 // if statement
 // Check if user is premium member
 
