@@ -1,9 +1,10 @@
+
+// 1. For each of the following code blocks, read the code and predict what the result of evaluating it would be, then execute the statement(s) in the Chrome console.
+
 let a = 1;
 let b = a++;
 let c = ++a;
-
 // what is the value of a, b, and c?
-
 console.log(a);
 
 console.log(b);
@@ -11,6 +12,10 @@ console.log(b);
 console.log(c);
 
 console.log(a + b + c);
+
+
+
+// --------------------------------------
 
 let d = "hello";
 let e = false;
@@ -32,7 +37,7 @@ console.log(price.toFixed(2));
 
 // console.log(price.toFixed(2));
 //
-let price2 = "2.7";
+//let price2 = "2.7";
 
 // console.log(price.toFixed(2));
 console.log(price);
@@ -88,7 +93,7 @@ console.log(sample.substring(sample.indexOf("C")),);
 // 3. Write some JavaScript code, that is, variables and operators, to describe the following scenarios. Do not worry about the real operations to get the values, the goal of these exercises is to understand how real world conditions can be represented with code.
 
 
-// Bullet 1 You have rented some movies for your kids: The little mermaid (for 3 days), Brother Bear (for 5 days, they love it), and Hercules (1 day, you don't know yet if they're going to like it). If price for a movie per day is $3, how much will you have to pay?
+//      •1 You have rented some movies for your kids: The little mermaid (for 3 days), Brother Bear (for 5 days, they love it), and Hercules (1 day, you don't know yet if they're going to like it). If price for a movie per day is $3, how much will you have to pay?
 
 let movieRentalRate = 3;
 
@@ -104,7 +109,7 @@ let totalPrice = totalDays * movieRentalRate;
 
 console.log("Total price for the rental movies is: $" + totalPrice);
 
-// Bullet 2 Suppose you're working as a contractor for 3 companies: Google, Amazon and Facebook, they pay you a different rate per hour. Google pays $400, Amazon $380, and Facebook $350. How much will you receive in payment for this week? You worked 10 hours for Facebook, 6 hours for Google and 4 hours for Amazon.
+//      •2 Suppose you're working as a contractor for 3 companies: Google, Amazon and Facebook, they pay you a different rate per hour. Google pays $400, Amazon $380, and Facebook $350. How much will you receive in payment for this week? You worked 10 hours for Facebook, 6 hours for Google and 4 hours for Amazon.
 
 let googleRate = 400;
 
@@ -135,7 +140,7 @@ console.log("Your total pay for Facebook is: $" +facebookPay);
 
 console.log("Your total pay for this week is : $" + totalPay + "\n");
 
-// Bullet 3 A student can be enrolled in a class only if the class is not full and the class schedule does not conflict with her current schedule.
+//      •3 A student can be enrolled in a class only if the class is not full and the class schedule does not conflict with her current schedule.
 
 isClassFull = false;
 
@@ -143,17 +148,17 @@ studentScheduleFull = false;
 
 // checks id class is full or if student schedule is full
 
-if (!isClassFull && !studentScheduleFull){
-    console.log("Student can enroll in class");
-} else {
+if (isClassFull || studentScheduleFull){
     console.log("Student can NOT enroll in class");
+} else {
+    console.log("Student can enroll in class");
 }
 
-// Bullet 4 A product offer can be applied only if a person buys more than 2 items, and the offer has not expired. Premium members do not need to buy a specific amount of products.
+//      •4 A product offer can be applied only if a person buys more than 2 items, and the offer has not expired. Premium members do not need to buy a specific amount of products.
 
 cartQTY = 2;
 
-expired = false;
+expired = true;
 
 premiumMember = false;
 
@@ -161,7 +166,7 @@ premiumMember = false;
 // let isValid = cartQTY >=2 && !expired && premiumMember;
 //
 // console.log(isValid);
-
+//
 // if statement
 // Check if user is premium member
 
@@ -171,12 +176,11 @@ if (premiumMember){
     } else {
         console.log("\nOffer is valid");
     }
-} else if (cartQTY >= 2) {                  // checks if cart qty is greater than 1
-    console.log("\nOffer is valid");
+} else if (cartQTY < 2 || expired) {                  // checks if cart qty is greater than 1
+    console.log("\nOffer is NOT valid");
 } else {
-    console.log("\nYou need at least 2 items for this Offer");
+    console.log("\nOffer is valid");
 }
-
 
 
 
@@ -191,11 +195,12 @@ let password = 'notastrongpassword';
 
 // Booleans for login validation
 
-let maxPswdLength = true; // valid if true
+let maxPswdLength = false; // valid if true
+
+let maxUsernameLength = false; // valid if true
 
 let usernameInPassword = true; // not valid if true
 
-let maxUsernameLength = true; // valid if true
 
 let usernameWhitespace = true; // not valid if true
 
@@ -234,17 +239,17 @@ if (password.includes(username)){
 
 // checks if username contains whitespaces
 
-if (username.includes(" ")){
+if (username.indexOf(0) || username.indexOf(-1) === " "){
     usernameWhitespace = true;
-    console.log("No whitespaces in username allowed");
+    console.log("Username is whitespace free");
 } else {
     usernameWhitespace = false;
-    console.log("Username is whitespace free");
+    console.log("No whitespaces in username allowed");
 }
 
 // checks if password contains whitespaces
 
-if (password.includes(" ")){
+if (password.indexOf(0) || password.indexOf(-1) === " "){
     pswdWhitespace = true;
     console.log("No whitespaces in password allowed");
 } else {
