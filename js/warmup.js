@@ -1,5 +1,3 @@
-
-
 // Their credit score must be over 680 AND have at least $4000 on-hand
 // OR, they must have at least $10000 on-hand
 

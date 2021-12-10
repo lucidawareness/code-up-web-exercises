@@ -18,8 +18,9 @@ if (premiumMember){
     } else {
         console.log("\nOffer is valid");
     }
-} else if (cartQTY < 2 || expired) {                  // checks if cart qty is greater than 1
+} else if (cartQTY < 2 || expired) {        // checks if cart qty is greater than 1 or if expired
     console.log("\nOffer is NOT valid");
 } else {
     console.log("\nOffer is valid");
 }
+

@@ -95,28 +95,32 @@ console.log(sample.substring(sample.indexOf("C")),);
 
 //      •1 You have rented some movies for your kids: The little mermaid (for 3 days), Brother Bear (for 5 days, they love it), and Hercules (1 day, you don't know yet if they're going to like it). If price for a movie per day is $3, how much will you have to pay?
 
-let movieRentalRate = 3;
+let movieRentalRate = 3; // rental rate in USD
 
-let mermaidDays = 3;
+let mermaidDays = 3;     // Number of days rented for each movie
 
 let brotherBearDays = 5;
 
 let herculesDays = 1;
 
-let totalDays = mermaidDays + brotherBearDays + herculesDays;
+let totalDays = mermaidDays + brotherBearDays + herculesDays; // combines # of days rented from each movie
 
-let totalPrice = totalDays * movieRentalRate;
+let totalPrice = totalDays * movieRentalRate; // total price for all movies rented
 
-console.log("Total price for the rental movies is: $" + totalPrice);
+console.log(`\nYou rented movies for a combined total of ${totalDays} days\nYour total price for the rental movies is: \$` + totalPrice + "\n");
 
 //      •2 Suppose you're working as a contractor for 3 companies: Google, Amazon and Facebook, they pay you a different rate per hour. Google pays $400, Amazon $380, and Facebook $350. How much will you receive in payment for this week? You worked 10 hours for Facebook, 6 hours for Google and 4 hours for Amazon.
 
+
+// Hourly Rates for each company
 let googleRate = 400;
 
 let amazonRate = 380;
 
 let facebookRate = 350;
 
+
+// Hours worked at each company
 let googleHours = 6 ;
 
 let amazonHours = 4 ;
@@ -124,19 +128,24 @@ let amazonHours = 4 ;
 let facebookHours = 10 ;
 
 
+// Total pay amount from each company
 let googlePay = googleRate * googleHours;
 
 let amazonPay = amazonRate * amazonHours;
 
 let facebookPay = facebookRate * facebookHours;
 
+
+// Total pay from all companies combined
 let totalPay = googlePay + amazonPay + facebookPay;
 
-console.log("Your total pay for Google is: $" + googlePay);
 
-console.log("Your total pay for Amazon is: $" +amazonPay);
+// Log Results
+console.log(`Your total pay for ${googleHours} hours at a rate of \$${googleRate}/hr for Google is: \$` + googlePay);
 
-console.log("Your total pay for Facebook is: $" +facebookPay);
+console.log(`Your total pay for ${amazonHours} hours at a rate of \$${amazonRate}/hr for Amazon is: \$` +amazonPay);
+
+console.log(`Your total pay for ${facebookHours} hours at a rate of \$${facebookRate}/hr for FaceBook is: \$` +facebookPay);
 
 console.log("Your total pay for this week is : $" + totalPay + "\n");
 
@@ -146,7 +155,7 @@ isClassFull = false;
 
 studentScheduleFull = false;
 
-// checks id class is full or if student schedule is full
+// checks if class is full or if student schedule is full
 
 if (isClassFull || studentScheduleFull){
     console.log("Student can NOT enroll in class");
