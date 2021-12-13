@@ -168,20 +168,20 @@ let luckyNumber = Math.floor(Math.random() * 6);
  * HINT: The way we prompt for a value could be improved
  */
 
-function isEvenOrOdd(num){
-    if(num % 2 == 0) {
+function isEvenOrOdd(num) {
+    if (num % 2 == 0) {
         alert(`The number ${num} is Even`);
     } else {
         alert(`The number ${num} is Odd`);
     }
 }
 
-function numPlus100(num){
-    alert(`Your number ${num} plus 100 = ${parseInt(num) + 100}`);
+function numPlus100(num) {
+    alert(`Your number ${num} + 100 = ${parseInt(num) + 100}`);
 }
 
-function isNegOrPos(num){
-    if (num > 0){
+function isNegOrPos(num) {
+    if (num > 0) {
         alert(`Your number ${num} is Positive`);
     } else if (num < 0) {
         alert(`You number ${num} is Negative`);
@@ -190,9 +190,12 @@ function isNegOrPos(num){
     }
 }
 
-function inputCheck(input){
-    if (isNaN(input)){
-        alert("Please input a number!");
+function inputCheck(input) {
+    if (isNaN(input)) {
+        alert(`"${input}" Is not a number!\nPlease input a number!`);
+        userPrompt();
+    } else if (input == null){
+        alert("Process cancelled");
         userPrompt();
     } else {
         isEvenOrOdd(input);
@@ -201,9 +204,9 @@ function inputCheck(input){
     }
 }
 
-function userPrompt(){
-    let userConfirm = confirm("Do you want to enter a num");
-    if (userConfirm === true){
+function userPrompt() {
+    let userConfirm = confirm("Do you want to enter a number?");
+    if (userConfirm === true) {
         let userNum = prompt("Please enter a number");
         inputCheck(userNum);
     } else {
