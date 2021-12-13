@@ -1,5 +1,5 @@
 "use strict";
-
+(function () {
 /* ########################################################################## */
 
 /**
@@ -130,7 +130,7 @@ function calculatedTotal(numberPicked, total) {
             alert(`You drew: #${numberPicked} \nYou get 100% off your total of \$${total}! \nYour new total is \$${discountedPrice5}`);
             break;
         default:
-            alert();
+            alert("Error Try Again");
             break;
     }
 }
@@ -215,3 +215,5 @@ function userPrompt() {
 }
 
 userPrompt();
+
+})();
