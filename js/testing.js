@@ -20,15 +20,24 @@ function isNegOrPos(num){
     }
 }
 
+function inputCheck(input){
+    if (isNaN(input)){
+        alert("Please input a number!");
+        userPrompt();
+    } else {
+        isEvenOrOdd(input);
+        numPlus100(input);
+        isNegOrPos(input);
+    }
+}
+
 function userPrompt(){
     let userConfirm = confirm("Do you want to enter a num");
     if (userConfirm === true){
         let userNum = prompt("Please enter a number");
-        isEvenOrOdd(userNum);
-        numPlus100(userNum);
-        isNegOrPos(userNum);
+        inputCheck(userNum);
     } else {
-        alert("Goodbye");
+        alert("Goodbye!");
     }
 }
 

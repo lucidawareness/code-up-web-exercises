@@ -39,8 +39,8 @@ console.log(analyzeColor("red"));
 // - `colors`: a list of the colors of the rainbow
 // - `randomColor`: contains a single random color value from the list (this
 //                  will contain a different color every time the page loads)
-var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-var randomColor = colors[Math.floor(Math.random() * colors.length)];
+let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+let randomColor = colors[Math.floor(Math.random() * colors.length)];
 /**
  * TODO:
  * Pass the `randomColor` variable to your 'analyzeColor' function and console.log the results.
@@ -190,15 +190,24 @@ function isNegOrPos(num){
     }
 }
 
+function inputCheck(input){
+    if (isNaN(input)){
+        alert("Please input a number!");
+        userPrompt();
+    } else {
+        isEvenOrOdd(input);
+        numPlus100(input);
+        isNegOrPos(input);
+    }
+}
+
 function userPrompt(){
     let userConfirm = confirm("Do you want to enter a num");
     if (userConfirm === true){
         let userNum = prompt("Please enter a number");
-        isEvenOrOdd(userNum);
-        numPlus100(userNum);
-        isNegOrPos(userNum);
+        inputCheck(userNum);
     } else {
-        alert("Goodbye");
+        alert("Goodbye!");
     }
 }
 
