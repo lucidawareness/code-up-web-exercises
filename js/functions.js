@@ -10,7 +10,7 @@
      */
 
     function sayHello(name) {
-        console.log(`Hello, ${name}`);
+        return console.log(`Hello, ${name}`);
     }
 
     sayHello("codeup");
@@ -92,10 +92,11 @@
      * prompt the user for the bill total and a percentage they would like to tip,
      * then display the dollar amount they should tip
      */
-    // let tipPercentage = prompt("What percentage would you like to tip?");
-    // let billTotal = prompt("What is your bill total?");
+    let rawPercentage = prompt("What percentage would you like to tip?");
+    let tipPercentage = rawPercentage / 100;
+    let billTotal = prompt("What is your bill total?");
 
-    // console.log(calculateTip(tipPercentage, billTotal));
+    console.log(calculateTip(tipPercentage, billTotal) + " Tip Amount");
 
 
     /**
@@ -113,11 +114,11 @@
      * > applyDiscount(45.99, 0.12) // 40.4712
      */
 
-    function applyDiscount(originalPrice, dicountPercent){
-        let priceAfter = originalPrice - (originalPrice * dicountPercent);
+    function applyDiscount(originalPrice, discountPercent){
+        let priceAfter = originalPrice - (originalPrice * discountPercent);
         return priceAfter
     }
 
-    console.log(applyDiscount(100, .2));
+    console.log(applyDiscount(100, .2) + " Bill Total");
 
 })();
