@@ -94,6 +94,9 @@
 			case "red":
 				console.log("Strawberries are Red!");
 				break;
+			case "green":
+				console.log("Green is the color of envy");
+				break;
 			default:
 				console.log(`I dont know anything about "${randomColor}"`);
 				break;
@@ -137,9 +140,10 @@
 
 	let luckyNumbers = [0, 1, 2, 3, 4, 5];
 	let numberPicked = luckyNumbers[Math.floor(Math.random() * luckyNumbers.length)]
-	let total = prompt("Enter to draw a number from 0-5 for your discount! \n\n*If your lucky number is 1 you'll get a 10% discount, if it's 2  the discount is 25%, if it's 3, 35%, if it's 4, 50%, and if it's 5 you'll get everything for free!* \n\nWhat is your bill total in USD?");
 
-	function calculatedTotal(numberPicked, total) {
+
+	function calculatedTotal(numberPicked) {
+		let total = prompt("Enter to draw a number from 0-5 for your discount! \n\n*If your lucky number is 1 you'll get a 10% discount, if it's 2  the discount is 25%, if it's 3, 35%, if it's 4, 50%, and if it's 5 you'll get everything for free!* \n\nWhat is your bill total in USD?");
 
 		switch (numberPicked) {
 			case 0 :
@@ -171,7 +175,7 @@
 		}
 	}
 
-	calculatedTotal(numberPicked, total);
+	calculatedTotal(numberPicked);
 
 
 	/**

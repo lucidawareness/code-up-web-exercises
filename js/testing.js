@@ -1,35 +1,47 @@
-// Create a file named conditionals.js inside the js directory.
-// 	Create a function called analyzeColor1 that takes a parameter called color
-// In your function, use ONLY if statements to print the following:
-// 	“blue is the color of the sky” if the value of color is “blue”
-// “red is the color of love” if the value of color is “red”
-// “green is the color of envy” if the value of color is “green”
-// “I don’t know that color” if the value of color is anything else
-// HINT: use return in the conditional code blocks to prevent from printing multiple times for the same argument
-// Add, commit, and push to GitHub.
-
-let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-let randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-
-function analyzeColor1(color) {
-	if (typeof color !== "string"){
-		return "This is not a word!";
+function isEvenOrOdd(num) {
+	if (num % 2 === 0) {
+		alert(`The number ${num} is Even`);
 	} else {
-		if (color === "blue") {
-			return "Blue is the color of the sky!";
-		} else if (color === "red") {
-			return "Red is the color of love!";
-		} else if (color === "green") {
-			return "Green is the color of envy!";
-		} else {
-			return `I dont know anything about "${color}"`;
-		}
+		alert(`The number ${num} is Odd`);
 	}
 }
 
-console.log(analyzeColor1("red"));
-console.log(analyzeColor1("yellow"));
-console.log(analyzeColor1(3543));
-console.log(`Random color is: ${randomColor}`);
-console.log(analyzeColor1(randomColor));
+function numPlus100(num) {
+	alert(`Your number ${num} + 100 = ${parseInt(num) + 100}`);
+}
+
+function isNegOrPos(num) {
+	if (num > 0) {
+		alert(`Your number ${num} is Positive`);
+	} else if (num < 0) {
+		alert(`You number ${num} is Negative`);
+	} else {
+		alert("Please enter a positive or negative number!");
+	}
+}
+
+function inputCheck(input) {
+	if (isNaN(input)) {
+		alert(`"${input}" Is not a number!\nPlease input a number!`);
+		userPrompt();
+	} else if (input == null) {
+		alert("Process cancelled");
+		userPrompt();
+	} else {
+		isEvenOrOdd(input);
+		numPlus100(input);
+		isNegOrPos(input);
+	}
+}
+
+function userPrompt() {
+	let userConfirm = confirm("Do you want to enter a number?");
+	if (userConfirm === true) {
+		let userNum = prompt("Please enter a number");
+		inputCheck(userNum);
+	} else {
+		alert("Goodbye!");
+	}
+}
+
+userPrompt();
