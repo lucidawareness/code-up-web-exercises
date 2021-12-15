@@ -24,7 +24,7 @@
 	// 	Determining if the string is a single character or not
 	// 	Determining if the length 1 string is a vowel or not
 
-	let userInput = prompt("Please enter a number or string")
+	let userInput = prompt("Please enter a number or string");
 
 // 	Determining if a number is odd or even. Re-use your Exercise 2 function for this.
 	function checkOddOrEven(input) {

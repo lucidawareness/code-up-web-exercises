@@ -422,48 +422,53 @@
 // - Make a function named `areEqual(input1, input2)` that returns if both inputs
 // have the same value
 	function areEqual(input1, input2) {
-		if (input1 === input2) {
+		if (input1 == input2) {
 			console.log(true);
 		} else {
 			console.log(false);
 		}
 	}
+	areEqual(randomNumber, randomNumber2);
 
 // - Make a function named `areIdentical(input1, input2)` that returns if both
 //     inputs are same value and data type.
-	function areEqual(input1, input2) {
+	function areIdentical(input1, input2) {
 		if (input1 === input2) {
 			console.log(true);
 		} else {
 			console.log(false);
 		}
 	}
+	areIdentical(randomNumber, randomNumber2);
 
 // - Make a function named `not(input)` returns the input with a flipped boolean
 	function not(input) {
-		if (input == true) {
+		if (input === true) {
 			console.log(false);
 		} else {
 			console.log(true);
 		}
 	}
+
+	console.log(randBool);
+	not(randBool);
 
 // - Make a function named `notNot(input)` that the negation of the negation of the
 // input.
 	function notNot(input) {
-		return
+
 	}
 
 // - Make a function named `and(predicate1, predicate2)` that returns the logical
 // operation of AND
 	function and(predicate1, predicate2) {
-		return
+
 	}
 
 // - Make a function named `or(predicate1, predicate2)` that returns the logical
 // operation of OR
 	function or(predicate1, predicate2) {
-		return
+
 	}
 
 // - Write a function called `reverseString(string)` that reverses a string
