@@ -26,41 +26,23 @@
 
 	let userInput = prompt("Please enter a number or string");
 
-// 	Determining if a number is odd or even. Re-use your Exercise 2 function for this.
-	function checkOddOrEven(input) {
-		if (input % 2 === 0) {
-			alert(`The number ${input} is Even`);
+	// 	Determining if the input is a number, string, or otherwise. This function should be called analyzeInput
+	function analyzeInput(input) {
+		if (input === null) {
+			alert("Process Cancelled");
+		} else if (input === "" || !input.replace(/\s/g, '').length) {
+			alert("No blank spaces allowed!")
+		} else if (isNaN(input)) {
+			stringMethod(input);
+		} else if (!isNaN(input)) {
+			integerMethod(input);
 		} else {
-			alert(`The number ${input} is Odd`);
+			alert("Error: Input a string or a number");
+			analyzeInput(userInput);
 		}
 	}
 
-//  Determining if a number is <, >, or equal to zero
-	function checkNumNegPosOrEqualToZero(input) {
-		let parsedInt = parseInt(input)
-		if (parsedInt === 0) {
-			alert(`The number ${input} is Zero`);
-		} else if (input > 0) {
-			alert(`The number ${input} is GREATER THAN Zero`);
-		} else {
-			alert(`The number ${input} is LESS THAN Zero`);
-		}
-	}
-
-// 	Determining if the string is a single character or not
-	function checkStringLength(input) {
-		let stringLength = input.length;
-		alert(`${input} has a length of ${stringLength}`);
-	}
-
-// 	Determining if the length 1 string is a vowel or not
-	function checkStringVowel(input) {
-		if (input === "A" || input === "E" || input === "I" || input === "O" || input === "U" || input === "a" || input === "e" || input === "i" || input === "o" || input === "u") {
-			alert(`${input} is a Vowel!`);
-		} else {
-			alert(`${input} is NOT a vowel`);
-		}
-	}
+	analyzeInput(userInput);
 
 	// If user input is string
 	function stringMethod(input) {
@@ -77,20 +59,41 @@
 		checkNumNegPosOrEqualToZero(input); // 	Output if the number is negative, positive, or zero
 	}
 
-// 	Determining if the input is a number, string, or otherwise. This function should be called analyzeInput
-	function analyzeInput(input) {
-		if (input === null) {
-			alert("Process Cancelled");
-		} else if (isNaN(input)) {
-			stringMethod(input);
-		} else if (!isNaN(input)) {
-			integerMethod(input);
-		} else {
+	// 	Determining if the string is a single character or not
+	function checkStringLength(input) {
+		let stringLength = input.length;
+		alert(`${input} has a length of ${stringLength}`);
+	}
 
+	// 	Determining if the length 1 string is a vowel or not
+	function checkStringVowel(input) {
+		if (input === "A" || input === "E" || input === "I" || input === "O" || input === "U" || input === "a" || input === "e" || input === "i" || input === "o" || input === "u") {
+			alert(`${input} is a Vowel!`);
+		} else {
+			alert(`${input} is NOT a vowel`);
 		}
 	}
 
-	analyzeInput(userInput);
+	// 	Determining if a number is odd or even. Re-use your Exercise 2 function for this.
+	function checkOddOrEven(input) {
+		if (input % 2 === 0) {
+			alert(`The number ${input} is Even`);
+		} else {
+			alert(`The number ${input} is Odd`);
+		}
+	}
+
+	//  Determining if a number is <, >, or equal to zero
+	function checkNumNegPosOrEqualToZero(input) {
+		let parsedFloat = parseFloat(input)
+		if (parsedFloat === 0) {
+			alert(`The number ${input} is Zero`);
+		} else if (input > 0) {
+			alert(`The number ${input} is GREATER THAN Zero`);
+		} else {
+			alert(`The number ${input} is LESS THAN Zero`);
+		}
+	}
 
 	// if (isNaN(input)) {
 	// 	stringMethod(input);
