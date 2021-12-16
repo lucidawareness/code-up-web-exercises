@@ -71,9 +71,7 @@
 		console.log(result);
 	}
 
-	for (let int = 100; int>0; int--) {
+	for (let int = 100; int>0; int-= 5) {
 		console.log(int);
 	}
-
-
 })();
