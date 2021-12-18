@@ -44,9 +44,11 @@
 	// Yay! I sold them all! // If there are no more cones
 
 	do {
-		console.log('while loop iteration #' + i);
-		i++;
-	} while (i < 10);
+		console.log(`Them: I want ${amountOfCones}`);
+		console.log(`You bought ${amountOfCones} cones`)
+		allCones -= amountOfCones;
+		;
+	} while (allCones >= amountOfCones);
 
 
 })();
