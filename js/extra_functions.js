@@ -488,34 +488,67 @@
 
 // - Make a function named `absoluteValue(number)` that returns the absolute value
 // of a number.
+	function absoluteValue(number){
+		console.log(Math.abs(number));
+	}
+	absoluteValue(2323);
 
 // - Make a function named `rollDice(sides)` that takes in an argument containing
 // the number of sides the die should have. Generate a random number between 1 up
 // to and including the number of sides.
 //
+	function rollDice(sides){
+		let diceRandom = Math.floor(Math.random() * 12) + 1;
+		console.log(diceRandom);
+	}
+	rollDice()
+
 //
 //
 // ## Simple Function Drills
 //
 // 1. Make a function called returnTwo() that returns the number 2 when called
+
+	function returnTwo(){
+		console.log(2);
+	}
+	returnTwo();
 //
 // Test this function with `console.log(returnTwo())`
 //
 //     1. Make a function called sayHowdy() which console.logs the string “Howdy!”
+	function sayHowdy(){
+		console.log("Howdy!");
+	}
+	sayHowdy();
 //
 //    Test this function by directly calling `sayHowdy()`
 //
 // Remember this function does not need a defined console.logvalue
 //
 // 1. Make a function called returnName() that returns the string of your name
+	function returnName(){
+		console.log("Irvin");
+	}
+	returnName();
 //
 // Test this function with `console.log(returnName())`
 //
 //     1. Make a function called addThree() which takes in a number input and returns the number plus 3.
+
+	function addThree(num){
+		console.log(parseInt(num) + 3);
+	}
+	addThree(5)
 //
 // Test this function with `console.log(addThree(5))`
 //
 //     1. Make a function called sayString() which returns the string input passed in.
+
+	function sayString(str){
+		console.log(str);
+	}
+	sayString("codeup");
 //
 // Test this function with `console.log(sayString('codeup'))`
 //
@@ -524,18 +557,35 @@
 //
 // - Write a function called `identity(input)` that takes in an argument called
 // input and returns that input.
+	function identity(input){
+		console.log(input);
+	}
+	identity("sdfds");
 //
 // - Write a function called `getRandomNumber(min, max)` that returns a random
 // number between min and max values sent to that function call.
+	function getRandomNumber(min, max){
+		console.log(Math.floor(Math.random() * max) + min);
+	}
+	getRandomNumber(1,5);
 //
 // - Write a function called `first(input)` that returns the first character in the
 // provided string.
+	function first(input){
+		console.log(input.charAt(0));
+	}
+	first("Hello");
 //
 // - Write a function called `last(input)` that returns the last character of a
 // string
+	function last(input){
+		console.log(input.charAt(-1));
+	}
+	last("Hello");
 //
 // - Write a function called `rest(input)` that returns everything but the first
 // character of a string.
+
 //
 // - Write a function called `reverse(input)` that takes a string and returns it
 // reversed.
