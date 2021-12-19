@@ -456,25 +456,35 @@
 // - Make a function named `notNot(input)` that the negation of the negation of the
 // input.
 	function notNot(input) {
-
+		if (parseInt(input) > 0 ){
+			console.log(-Math.abs(input));
+		} else if (parseInt(input) < 0){
+			console.log(Math.abs(input));
+		} else {
+			console.log("Please input a positive or negative number");
+		}
 	}
+	notNot(-546);
+	notNot(6546);
 
 // - Make a function named `and(predicate1, predicate2)` that returns the logical
 // operation of AND
 	function and(predicate1, predicate2) {
-
+		console.log(predicate1 && predicate2);
 	}
+	and(123, 312);
 
 // - Make a function named `or(predicate1, predicate2)` that returns the logical
 // operation of OR
 	function or(predicate1, predicate2) {
-
+		console.log(predicate1 || predicate2);
 	}
-
+	or(23223,2323)
 // - Write a function called `reverseString(string)` that reverses a string
 	function reverseString(string) {
 		console.log(string.split("").reverse().join(""));
 	}
+	reverseString("sdfsdf");
 
 // - Make a function named `absoluteValue(number)` that returns the absolute value
 // of a number.
