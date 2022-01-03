@@ -585,23 +585,64 @@
 //
 // - Write a function called `rest(input)` that returns everything but the first
 // character of a string.
+	function rest(input){
+		let input2 = input.slice(1);
+		return input2;
+	}
+	console.log(rest("Hello"));
 
 //
 // - Write a function called `reverse(input)` that takes a string and returns it
 // reversed.
+	function reverse(input) {
+		return input.split("").reverse().join("");
+	}
+
+
+	console.log(reverse("Hello"));
 //
 // - Write a function called `isNumeric(input)` that takes an input and returns a
 // boolean if the input is numeric.
+	function isNumeric(input){
+		if (isNaN(input)){
+			return "Input is not a number";
+		} else {
+			return "Input IS a number!";
+		}
+	}
+
+	console.log(isNumeric(23));
+	console.log(isNumeric("dsgfd"));
 //
 // - Write a function called `count(input)` that takes in a string and returns the
 // number of characters.
+	function count(input){
+		return input.length;
+	}
+
+	console.log(count("ds"));
 //
 // - Write a function called `add(a, b)` that returns the sum of a and b
+	function add(a,b){
+		return a + b;
+	}
+
+	console.log(add(2,2));
 //
-// - Write a function called `subtract(a, b)` that console.logthe difference between
+// - Write a function called `subtract(a, b)` that console.log the difference between
 // the two inputs.
+	function subtract(a,b){
+		return a-b;
+	}
+
+	console.log(subtract(2,2));
 //
 // - Write `multiply(a, b)` function that returns the product
+	function multiply(a,b){
+		return a * b;
+	}
+
+	console.log(multiply(2,2));
 //
 // - Write a `divide(numerator, denominator)` function that returns a divided by b
 //
