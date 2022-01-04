@@ -46,7 +46,8 @@
 
 	function getPassword() {
 		let pass = "123";
-		for (let i = 0; i < 3; i++) {
+		let attemptsAllowed = 3
+		for (let i = 0; i < attemptsAllowed; i++) {
 			let userInput = prompt("Enter Password");
 			if (userInput === null) { //checks if user cancelled prompt
 				alert("Process Cancelled!")
@@ -59,6 +60,7 @@
 				alert(`Please try again!\nYou have ${2 - i} attempts left`);
 			} else { // user reached max attempts
 				alert("Max Attempts Reached!");
+				return;
 			}
 		}
 	}
