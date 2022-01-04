@@ -63,15 +63,24 @@
 	// 88888888
 	// 999999999
 
-	for (let i = 1; i<10; i++) {
-		let result = "";
-		for (let x = 1; x <= i; x++){
-			result += `${i}`;
+	function rightTriangleLog() {
+		for (let i = 1; i < 10; i++) {
+			let result = "";
+			for (let x = 1; x <= i; x++) {
+				result += `${i}`;
+			}
+			console.log(result);
 		}
-		console.log(result);
 	}
 
-	for (let int = 100; int>0; int-= 5) {
-		console.log(int);
+	rightTriangleLog();
+
+	function minusFive() {
+		for (let int = 100; int > 0; int -= 5) {
+			console.log(int);
+		}
 	}
+	minusFive();
+
+
 })();
