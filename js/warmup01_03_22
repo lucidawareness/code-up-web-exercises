@@ -63,6 +63,7 @@
 	checkFizzBuzz(6);
 	checkFizzBuzz(10);
 	checkFizzBuzz(15);
+	checkFizzBuzz("sdf");
 
 //	First Solution
 // function getFizzBuzz(startingNum) {
