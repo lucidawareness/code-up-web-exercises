@@ -45,7 +45,7 @@
 		console.log(`I have ${allCones} to sell!`);
 		let conesBought = Math.floor(Math.random() * 5) + 1;
 		if (conesBought > allCones){
-			console.log(`Cannot sell you ${conesBought}, I only have ${allCones}`);
+			console.log(`Cannot sell you ${conesBought}, I have ${allCones} cones left`);
 			break;
 		} else {
 			console.log(`Them: I want ${conesBought}`);
