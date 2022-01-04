@@ -41,29 +41,29 @@
 
 	//second attempt
 
-	function getFizzBuzz(startingNum){
-		if (startingNum % 3 === 0 && startingNum % 5 === 0){
-			return "FIZZ BUZZ"
-		} else if (startingNum % 3 === 0){
-			console.log("fizz");
-		} else if (startingNum % 5 === 0){
-			console.log("buzz");
-		}
-	}
-
-	function checkFizzBuzz(input){
-		let check = getFizzBuzz(input);
-		if (check === "FIZZ BUZZ"){
-			console.log(getFizzBuzz(input));
-		} else if (!!check) {
-			getFizzBuzz(input);
-		}
-	}
-
-	checkFizzBuzz(6);
-	checkFizzBuzz(10);
-	checkFizzBuzz(15);
-	checkFizzBuzz("sdf");
+	// function getFizzBuzz(startingNum){
+	// 	if (startingNum % 3 === 0 && startingNum % 5 === 0){
+	// 		return "FIZZ BUZZ"
+	// 	} else if (startingNum % 3 === 0){
+	// 		console.log("fizz");
+	// 	} else if (startingNum % 5 === 0){
+	// 		console.log("buzz");
+	// 	}
+	// }
+	//
+	// function checkFizzBuzz(input){
+	// 	let check = getFizzBuzz(input);
+	// 	if (check === "FIZZ BUZZ"){
+	// 		console.log(getFizzBuzz(input));
+	// 	} else if (!!check) {
+	// 		getFizzBuzz(input);
+	// 	}
+	// }
+	//
+	// checkFizzBuzz(6);
+	// checkFizzBuzz(10);
+	// checkFizzBuzz(15);
+	// checkFizzBuzz("sdf");
 
 //	First Solution
 // function getFizzBuzz(startingNum) {
@@ -94,25 +94,32 @@
 // 	Using prompt(), alert(), variables, and a while-loop, ask the user to input their password until their entry matches your hard-coded password value.
 // 	HINT: start by defining the correct password and don't forget to link your html file
 
-	// let userPass = "123";
-	// let loginAttempts = 1;
-	//
-	// function promptUser(){
-	// 	let userInput = prompt("Enter Password");
-	// 	return userInput;
-	// }
-	//
-	// function getPassword(){
-	// 	while (promptUser() !== userPass && loginAttempts < 3){
-	// 		loginAttempts ++;
-	// 		alert(`Please try again!\nAttempts Remaining ${4 - loginAttempts}`);
-	// 	}
-	// 	if (promptUser() === userPass){
-	// 		alert("Correct!")
-	// 	}
-	// }
-	//
-	// getPassword();
+	let userPass = "123";
+	let loginAttempts = 1;
+
+	function promptUser() {
+		let userInput = prompt("Enter Password");
+		if (userInput === null) {
+			alert("Process Cancelled!");
+		} else {
+			return userInput;
+		}
+	}
+
+	function getPassword() {
+		while (promptUser() !== userPass && loginAttempts < 3) {
+			loginAttempts++;
+			alert(`Please try again!\nAttempts Remaining ${4 - loginAttempts}`);
+
+		}
+		if (loginAttempts >= 3) {
+			alert("Max Attempts Reached")
+		} else {
+			alert("Correct!");
+		}
+	}
+
+	getPassword();
 	//
 	// getMeaningOfLife
 	// Write a function named getMeaningOfLife which accepts one parameter, meaningfulNum.
