@@ -34,23 +34,30 @@
 	// Here is an odd number: 49
 
 	'use strict';
+	let input;
 
-	let input = parseInt(prompt("Enter an odd number between 1 and 50"));
+	function promptUser() {
+		input = prompt("Enter an odd number between 1 and 50 to skip");
+	}
 
-	if (isNaN(input) || input % 2 === 0 || input == null) {
-		alert("Please try again and input an odd number");
-	} else {
-		for (let i = 1; i < 50; i++) {
-
-			if (input === i) {
-				console.log("Yikes! Skipping number: " + i);
-				continue;
-			} else if (i % 2 === 0) {
-				continue;
-			}
-
-			console.log('Here is an odd number: ' + i);
+	for (let i = 1; i < 50; i++) {
+		promptUser();
+		if (input === null) { // checks if user cancelled prompt
+			alert("Process Cancelled!");
+			break;
+		} else if (input <= 0 || input > 50) { // checks if input is between 1 and 50
+			alert("Please enter a number between 1 and 50!");
+		} else if (isNaN(input) || input % 2 === 0) { // checks if user input is a number or is even
+			alert("Please try again and input an odd number!");
 		}
+		if (input === i) { // if input passes all checks, check if input is equal to the current iteration
+			console.log("Yikes! Skipping number: " + i);
+			continue;
+		} else if (i % 2 === 0) { // skips even numbers
+			continue;
+		}
+
+		console.log('Here is an odd number: ' + i); // logs odd numbers
 	}
 
 })();
