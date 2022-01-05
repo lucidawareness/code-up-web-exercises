@@ -43,7 +43,7 @@
 		// This expression will generate a random number between 1 and 5
 		console.log(`I have ${allCones} to sell!`);
 		let conesBought = Math.floor(Math.random() * 5) + 1;
-		if (conesBought > allCones){
+		if (conesBought > allCones) {
 			console.log(`Cannot sell you ${conesBought}, I have ${allCones} left`);
 		} else {
 			console.log(`Them: I want ${conesBought}`);

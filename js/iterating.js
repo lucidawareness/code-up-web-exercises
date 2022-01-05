@@ -55,7 +55,7 @@
 	 *  > second([1, 2, 3, 4, 5]) // returns 2
 	 *  > last([1, 2, 3, 4, 5]) // return 5
 	 */
-
+	let numArr = [1, 2, 3, 4, 5]
 	function first(arr) {
 		console.log(arr[0]);
 	}
@@ -65,15 +65,12 @@
 	}
 
 	function last(arr) {
-		console.log(arr[4]);
+		console.log(arr[arr.length -1]);
 	}
 
-	first([1, 2, 3, 4, 5]) // returns 1
-	second([1, 2, 3, 4, 5]) // returns 2
-	last([1, 2, 3, 4, 5]) // return 5
+	first(numArr) // returns 1
+	second(numArr) // returns 2
+	last(numArr) // return 5
 
-	// let arra = [1,2,3,4,5]
-	//
-	// console.log(arra[-1])
 
 })();
