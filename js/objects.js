@@ -65,7 +65,6 @@
 			console.log(`\n${shoppers[i].name}'s total is $${shoppers[i].amount}\nYou saved $${discount}\nYour new total is:$${finalPrice}\n`); // logs users name, total before discount, discount amount, total after discount
 		} else { // if user amount less <= 200
 			console.log(`\nHello ${shoppers[i].name} your total is $${shoppers[i].amount}\n`); // logs total for user with no discount
-
 		}
 
 	}
@@ -192,7 +191,6 @@
 		console.log(`Shows all books in array`);
 		console.log(arr);
 	}
-
 
 	showBookInfo(0);
 	showAllBooks(books2);

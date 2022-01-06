@@ -28,7 +28,7 @@
 			},
 			imdbRating: 9.2,
 			academyAwardWinner: false,
-			genres: []
+			genres: ["action", "suspense", "thriller"]
 
 
 		},
@@ -42,7 +42,7 @@
 			},
 			imdbRating: 9.1,
 			academyAwardWinner: false,
-			genres: []
+			genres: ["action", "suspense", "thriller"]
 
 
 		},
@@ -56,18 +56,27 @@
 			},
 			imdbRating: 9.0,
 			academyAwardWinner: false,
-			genres: []
+			genres: ["action", "suspense", "thriller"]
 		},
 	]
+	// Change the director member of your movies to an object
+	// with firstName and lastName members
+	// Make an array member for your movies called genres.
+	// 	It is an array of string elements where each element
+	// is one of your movies’ genres from imdb.com
+	// and change your printMovie function
 
 	function printMovie(i) {
 		console.log(`Printing movie of index "${i}"`);
-		console.log(movies[i])
+		console.log(movies[i]);
 	}
 
 	function printMovies(arr) {
 		console.log(`Printing objects in Movies array`);
-		console.log(arr);
+		for (let i = 0; i < arr.length; i++) {
+			console.log(`\nMovie #${i + 1}.\nTitle: ${arr[i].title}\nYear Released: ${arr[i].yearReleased}\nYour Rating: ${arr[i].rating}`);
+		}
+		// console.log(arr);
 	}
 
 	printMovie(0);
@@ -75,12 +84,21 @@
 	printMovie(2);
 	printMovies(movies);
 
-	// Change the director member of your movies to an object
-	// with firstName and lastName members
-	// Make an array member for your movies called genres.
-	// 	It is an array of string elements where each element
-	// is one of your movies’ genres from imdb.com
-	// and change your printMovie function
+
+	// Add a rate(rating) function to each of your movie objects.
+	// 	The function takes an int parameter called rating
+	// Modify rate(rating) to set a myRating property on that object
+	// modify printMovie to display myRating for each movie
+	// 15 minutes
+
+	function rateMovie(i, rating) {
+		movies[i].rating = rating;
+	}
+
+	rateMovie(0, "OK");
+	rateMovie(1, "Bad");
+	console.log("New rating")
+	console.log(movies);
 
 
 })();
