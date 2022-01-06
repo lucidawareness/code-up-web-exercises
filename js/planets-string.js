@@ -35,14 +35,14 @@
 
 	// add <ul> to beginning of planets array
 	planetsArray.unshift('<ul>');
-	// add <ul> to beginning of planets array
+	// add <ul> to end of planets array
 	planetsArray.push('/<ul>');
 	console.log(planetsArray);
 	// make array string joined by <li>
 	let planetsUl = planetsArray.join('<li>');
 	console.log(planetsUl);
 
-	// problem : no way to add /<li> to end of each planet
+	// problem : no way to add /<li> to end of each planet The problem is you can't wrap each planet in open and closing line item tags.
 
 
 })();

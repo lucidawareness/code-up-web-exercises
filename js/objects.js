@@ -157,7 +157,7 @@
 	 *      ...
 	 */
 
-	for (let i = 0; i < books.length; i++) { // loops through object list until i is greater than the length of the object
+	for (let i = 0; i < books.length; i++) { // loops through object list until I is greater than the length of the object
 		console.log(`Book # ${i + 1}\nBook Title: ${books[i].title}\nAuthor: ${books[i].author.firstName} ${books[i].author.lastName}\n`);
 	}
 
@@ -172,30 +172,30 @@
 	 *   `showBookInfo` function.
 	 */
 
-	let books2;
+	let books2 = {};
 
-	function createBook(title, authorFirstName, authorLastName) {
-		books2 = {
-			title: title,
-			author: {
-				firstName: authorFirstName,
-				lastName: authorLastName
-			}
-		}
-		console.log(books2);
-		return books2;
+	function createBook(index, title, authorFirstName, authorLastName) {
+		books2[index] = {title: title, author: {authorFirstName: authorFirstName, authorLastName: authorLastName}}
+		// console.log(books2[index]);
 	}
 
-	createBook("Hello", "Irvin", "Ruiz");
 
-	console.log(books2);
+	createBook(0, "Hello", "Irvin", "Ruiz");
+	createBook(1, "Hello2", "Irvin2", "Ruiz2");
 
-	function showBookInfo(obj){
-		console.log(books2);
+	function showBookInfo(index) {
+		console.log(`Shows book at index of "${index}"`);
+		console.log(books2[index]);
 	}
+
+	function showAllBooks(arr) {
+		console.log(`Shows all books in array`);
+		console.log(arr);
+	}
+
 
 	showBookInfo(0);
-
+	showAllBooks(books2);
 
 
 })();
