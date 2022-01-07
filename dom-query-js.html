@@ -24,41 +24,61 @@
     pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
     culpa qui officia deserunt mollit anim id est laborum.
 </p>
+<div id="reset-activate-all-div">
+    <div id="activate-all-div">
+        <h1 id="activate-all-header"><b>Activate All The Actions</b></h1>
+        <button id="activate-all-btn">CLick To Activate All Actions At Once!</button>
+    </div>
+    <div id="reload-div">
+        <h1 id="reload-header"><b>Reset The Elements</b></h1>
+        <button id="reload-btn">CLick To Reset Page Now!</button>
+    </div>
+</div>
 
-<div>
-    <h1>Buttons</h1>
+<div id="ul-div">
+    <h1>Action Buttons</h1>
     <ul>
-        <li>Button # 1<br>
+        <li><b>Action # 1</b><br>
             <button id="btn1">Set inner html of mainHeader to "JavaScript is Cool"</button>
             <br>
             <br>
+            Revert Action #1<br>
             <button id="btn1revert">Revert inner html of mainHeader</button>
         </li>
-        <li>Button # 2<br>
+        <br>
+        <li><b>Action # 2</b><br>
             <button id="btn2">Set the text color of subHeader to blue</button>
             <br>
             <br>
+            Revert Action #2<br>
             <button id="btn2revert">Revert text color of subHeader to black</button>
         </li>
-        <li>Button # 3<br>
+        <br>
+        <li><b>Action # 3</b><br>
             <button id="btn3">Set text color on every other list item to grey</button>
             <br>
             <br>
+            Revert Action #3<br>
             <button id="btn3revert">Revert text color of list items to black</button>
         </li>
-        <li>Button # 4<br>
+        <br>
+        <li><b>Action # 4</b><br>
             <button id="btn4">Set text color of li with dbid = 1 to blue</button>
             <br>
             <br>
+            Revert Action #4<br>
             <button id="btn4revert">Revert text color of li to black</button>
         </li>
-        <li>Button # 5<br>
+        <br>
+        <li><b>Action # 5</b><br>
             <button id="btn5">Change the text in the first sub paragraph to "Mission Accomplished!"</button>
             <br>
             <br>
+            Revert Action #5<br>
             <button id="btn5revert">Revert text of the first sub paragraph</button>
         </li>
     </ul>
+
 </div>
 
 <script>
@@ -159,6 +179,24 @@
 		}
 		document.getElementById("btn5").addEventListener("click", btn5);
 		document.getElementById("btn5revert").addEventListener("click", btn5revert);
+
+		// TODO: Add button event and listener to reload page and reset html elements
+		let activateAllBtn = function (){
+			btn1();
+			btn2();
+			btn3();
+			btn4();
+			btn5();
+        }
+		let relaodBtn = function () {
+			btn1revert()
+			btn2revert()
+			btn3revert()
+			btn4revert()
+			btn5revert();
+		}
+		document.getElementById("activate-all-btn").addEventListener("click", activateAllBtn);
+		document.getElementById("reload-btn").addEventListener("click", relaodBtn);
 
 	})();
 </script>
