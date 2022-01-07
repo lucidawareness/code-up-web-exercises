@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>DOM: Query and Modify</title>
@@ -25,44 +25,146 @@
     culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
+<div>
+    <h1>Buttons</h1>
+    <ul>
+        <li>Button # 1</br>
+            <button id="btn1">Set inner html of mainHeader to "JavaScript is Cool"</button>
+            </br>
+            </br>
+            <button id="btn1revert">Revert inner html of mainHeader</button>
+        </li>
+        </br>
+        <li>Button # 2</br>
+            <button id="btn2">Set the text color of subHeader to blue</button>
+            </br>
+            </br>
+            <button id="btn2revert">Revert text color of subHeader to black</button>
+        </li>
+        </br>
+        <li>Button # 3</br>
+            <button id="btn3">Set text color on every other list item to grey</button>
+            </br>
+            </br>
+            <button id="btn3revert">Revert text color of list items to black</button>
+        </li>
+
+
+        </br>
+        <li>Button # 4</br>
+            <button id="btn4">Set text color of li with dbid = 1 to blue</button>
+            </br>
+            </br>
+            <button id="btn4revert">Revert text color of li to black</button>
+        </li>
+        </br>
+        <li>Button # 5</br>
+            <button id="btn5">Change the text in the first sub paragraph to "Mission Accomplished!"</button>
+            </br>
+            </br>
+            <button id="btn5revert">Revert text of the first sub paragraph</button>
+        </li>
+    </ul>
+</div>
+
 <script>
 	(function () {
 		"use strict";
+
 		// TODO: Uncomment next line and get the main header element by id
 		let mainHeader = document.getElementById("main-header");
+		let mainHeaderText = mainHeader.innerHTML;
 
 		// TODO: Set inner html of mainHeader to "JavaScript is Cool"
-		mainHeader.innerHTML = "JavaScript is Cool";
+		// TODO: Add button to perform the task above
+		let btn1 = function (event) {
+			mainHeader.innerHTML = "JavaScript is Cool";
+		}
+		let btn1revert = function (event) {
+			mainHeader.innerHTML = mainHeaderText;
+		}
+		document.getElementById('btn1').addEventListener('click', btn1);
+		document.getElementById('btn1revert').addEventListener('click', btn1revert);
+
 
 		// TODO: Uncomment the next line and get the sub header element by id
 		let subHeader = document.getElementById("sub-header");
+		let subHeaderColor = document.getElementById('sub-header').style.color;
 
 		// TODO: Set the text color of subHeader to blue
-		subHeader.style.color = "blue";
+		// TODO: Add button to do the task above
+		let btn2 = function (event) {
+			subHeader.style.color = "blue";
+		}
+		let btn2revert = function (event) {
+			subHeader.style.color = subHeaderColor;
+		}
+		document.getElementById('btn2').addEventListener('click', btn2);
+		document.getElementById('btn2revert').addEventListener('click', btn2revert);
+
 
 		// TODO: Uncomment the next line and get all list items
 		let listItems = document.getElementsByTagName("li");
 		// TODO: Set text color on every other list item to grey
+		// TODO: Add button to perform task above
 		// listItems.style.color = "grey"; // NOTE : Loop through list of html elements to access only one.
-		for (let i = 0; i < listItems.length; i++) {
-			if (i % 2 === 0) {
-				listItems[i].style.color = "grey";
+		let btn3 = function (event) {
+			for (let i = 0; i < listItems.length; i++) {
+				if (i % 2 === 0) {
+					listItems[i].style.color = "grey";
+				}
 			}
 		}
+		let btn3revert = function (event) {
+			for (let i = 0; i < listItems.length; i++) {
+				if (i % 2 === 0) {
+					listItems[i].style.color = "";
+				}
+			}
+		}
+		document.getElementById("btn3").addEventListener("click", btn3);
+		document.getElementById("btn3revert").addEventListener("click", btn3revert);
+
 
 		// TODO: Set text color of li with dbid = 1 to blue
-		for (let i = 0; i < listItems.length; i++) {
-			if (listItems[i].getAttribute('data-dbid') === "1") {
-				listItems[i].style.color = "blue";
+		// TODO: add button to perform task above
+		let btn4 = function (event) {
+			for (let i = 0; i < listItems.length; i++) {
+				if (listItems[i].getAttribute('data-dbid') === "1") {
+					listItems[i].style.color = "blue";
+				}
 			}
 		}
+		let btn4revert = function (event) {
+			for (let i = 0; i < listItems.length; i++) {
+				if (listItems[i].getAttribute('data-dbid') === "1") {
+					listItems[i].style.color = "";
+				}
+			}
+		}
+		document.getElementById("btn4").addEventListener("click", btn4);
+		document.getElementById("btn4revert").addEventListener("click", btn4revert);
+
 
 		// TODO: Uncomment the next line and get all elements with class name sub-paragraph
 		let subParagraphs = document.getElementsByClassName("sub-paragraph");
+		let subParagraph;
+		for (let i = 0; i < subParagraphs.length; i++){
+			subParagraph = subParagraphs[i].innerHTML;
+        }
+		// let subParagraphsInnerHtml = subParagraphs.innerHtml;
 
 
 		// TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
-		subParagraphs[0].innerHTML = "Mission Accomplished";
+		// TODO: Add button to perform above task
+		let btn5 = function (event) {
+			subParagraphs[0].innerHTML = "Mission Accomplished";
+		}
+		let btn5revert = function (event){
+			subParagraphs[0].innerHTML = subParagraph;
+        }
+		document.getElementById("btn5").addEventListener("click", btn5);
+		document.getElementById("btn5revert").addEventListener("click", btn5revert);
 
 	})();
 </script>
