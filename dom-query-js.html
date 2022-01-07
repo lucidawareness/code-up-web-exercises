@@ -149,9 +149,9 @@
 		// TODO: Uncomment the next line and get all elements with class name sub-paragraph
 		let subParagraphs = document.getElementsByClassName("sub-paragraph");
 		let subParagraph;
-		for (let i = 0; i < subParagraphs.length; i++){
+		for (let i = 0; i < subParagraphs.length; i++) {
 			subParagraph = subParagraphs[i].innerHTML;
-        }
+		}
 		// let subParagraphsInnerHtml = subParagraphs.innerHtml;
 
 
@@ -160,9 +160,9 @@
 		let btn5 = function (event) {
 			subParagraphs[0].innerHTML = "Mission Accomplished";
 		}
-		let btn5revert = function (event){
+		let btn5revert = function (event) {
 			subParagraphs[0].innerHTML = subParagraph;
-        }
+		}
 		document.getElementById("btn5").addEventListener("click", btn5);
 		document.getElementById("btn5revert").addEventListener("click", btn5revert);
 
