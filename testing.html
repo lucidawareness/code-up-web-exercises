@@ -5,7 +5,24 @@
     <title>Testing JS</title>
 </head>
 <body>
+<ul>
+    <li data-dbid="123">Item one</li>
+    <li data-dbid="234">Item two</li>
+</ul>
+<script>
+	"use strict";
+	(function() {
+		// Get the main heading h1 by id
+		let listItems = document.getElementsByTagName('li');
 
-<script src="js/warmup01_04_22.js"></script>
+		for (let i = 0; i < listItems.length; i++) {
+			let dbId = listItems[i].getAttribute("data-dbid");
+			console.log(dbId);
+		}
+		// Prints
+		// 123
+		// 234
+	})();
+</script>
 </body>
 </html>

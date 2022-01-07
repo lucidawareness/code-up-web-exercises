@@ -31,7 +31,7 @@
 	 */
 
 	person.hello = function () {
-		return ("Hello from " + person.firstName + " " + person.lastName);
+		return ("Hello from " + this.firstName + " " + this.lastName);
 	}
 
 	console.log(person.hello());
@@ -183,12 +183,12 @@
 	createBook(1, "Hello2", "Irvin2", "Ruiz2");
 
 	function showBookInfo(index) {
-		console.log(`Shows book at index of "${index}"`);
+		console.log(`\nShows book at index of "${index}"`);
 		console.log(books2[index]);
 	}
 
 	function showAllBooks(arr) {
-		console.log(`Shows all books in array`);
+		console.log(`\nShows all books in array`);
 		console.log(arr);
 	}
 
