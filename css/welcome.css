@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=The+Nautigal&display=swap');
+h1{
+    color: purple;
+}
+
+h1, h2 {
+    color: blue;
+    text-decoration: underline;
+}
+
+.fancy-header {
+    text-align: center;
+}
+
+body {
+    background-color: antiquewhite;
+    font-family: 'The Nautical', cursive;
+}
+
+main {
+    background-image: url("https://images.pexels.com/photos/103123/pexels-photo-103123.jpeg?cs=srgb&dl=pexels-julian-jagtenberg-103123.jpg&fm=jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+ul {
+    list-style: square;
+}
+
+table, th, td{
+    border: 1px solid black;
+    font-size: 1.5em;
+}
+
+/* unvisited link (:link) */
+a:link {
+    color:red;
+}
+
+/* visited link (:visited) */
+a:visited {
+    color:black;
+}
+
+/* mouse hover over link (:hover) */
+a:hover {
+    color:blue;
+}
+
+/* active/selected link (:active) */
+a:active {
+    color:green;
+}
