@@ -14,12 +14,20 @@ table {
 }
 
 .img {
-    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
+    border-radius: 25px;
+    box-shadow: inset 8px 8px 8px #cbced1,
+    inset -8px -8px 8px #ffffff;
 }
 
 header {
+    padding-top: 10px;
     background-color: #2594CC;
-    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
+    border-radius: 15px;
+    box-shadow: inset 8px 8px 8px #cbced1,
+    inset -8px -8px 8px #ffffff;
+}
+.header-p {
+    padding-bottom: 25px;
 }
 
 .table-div {
@@ -31,7 +39,9 @@ h1 {
 }
 
 hr {
-    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
+    border-radius: 25px;
+    box-shadow: inset 8px 8px 8px #cbced1,
+    inset -8px -8px 8px #ffffff;
 }
 
 h2 {
@@ -52,13 +62,17 @@ main {
     background-image: url("https://images.pexels.com/photos/103123/pexels-photo-103123.jpeg?cs=srgb&dl=pexels-julian-jagtenberg-103123.jpg&fm=jpg");
     background-repeat: no-repeat;
     background-size: auto;
-    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
+    border-radius: 25px;
+    box-shadow: inset 8px 8px 8px #cbced1,
+    inset -8px -8px 8px #ffffff;
 }
 
 table, th, td {
     border: 5px solid black;
     font-size: 1.5em;
-    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
+    border-radius: 25px;
+    box-shadow: inset 8px 8px 8px #cbced1,
+    inset -8px -8px 8px #ffffff;
     padding: 10px;
 }
 
