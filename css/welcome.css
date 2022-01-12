@@ -1,9 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=The+Nautigal&display=swap');
+body :not(ul, li){
+    text-align: center;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+header {
+    background-color: #2594CC;
+}
+.table-div {
+    padding-bottom: 50px;
+}
+
 h1{
     color: purple;
 }
 
-h1, h2 {
+h2 {
     color: blue;
     text-decoration: underline;
 }
@@ -13,7 +31,7 @@ h1, h2 {
 }
 
 body {
-    background-color: antiquewhite;
+    background-color: #647595;
     font-family: 'The Nautical', cursive;
 }
 
@@ -23,10 +41,6 @@ main {
     background-size: auto;
 }
 
-ul {
-    list-style: square;
-}
-
 table, th, td{
     border: 1px solid black;
     font-size: 1.5em;
@@ -34,7 +48,7 @@ table, th, td{
 
 /* unvisited link (:link) */
 a:link {
-    color:red;
+    color:darkred;
 }
 
 /* visited link (:visited) */
