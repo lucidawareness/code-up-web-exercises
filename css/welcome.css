@@ -23,8 +23,6 @@ header {
     padding-top: 10px;
     background-color: #2594CC;
     border-radius: 15px;
-    box-shadow: inset 8px 8px 8px #cbced1,
-    inset -8px -8px 8px #ffffff;
 }
 .header-p {
     padding-bottom: 25px;

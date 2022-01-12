@@ -18,8 +18,10 @@ a {
 
 .container {
     max-width: 750px;
-    margin: 0 auto;
     /* TODO: Make this a flex container and align it's items to the center*/
+    display: flex;
+    align-items: center;
+    margin: 0 auto 0;
 }
 
 .card {
@@ -29,6 +31,7 @@ a {
     border-radius: 4px;
     text-align: center;
     /*  TODO: Change this flex items basis to 100% of the page  */
+    flex-basis: 100%;
 }
 
 .card-title {
@@ -65,4 +68,16 @@ a {
     padding: 10px;
     color: white;
     border-radius: 4px;
+}
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.header h1 {
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    text-decoration: underline;
 }

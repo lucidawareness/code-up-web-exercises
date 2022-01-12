@@ -1,10 +1,17 @@
 * {
     margin: 0 auto;
 }
+body {
+    background-image: url("https://i.imgflip.com/1r1bep.jpg");
+    background-size: cover;
+
+}
 
 section {
     text-align: center;
-    margin-top: 50px;
+    background-color: pink;
+    margin-top: 75%;
+    width: 350px;
 }
 
 .bread {
