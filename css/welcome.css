@@ -1,32 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=The+Nautigal&display=swap');
-body :not(ul, li){
+
+body :not(ul, li) {
     text-align: center;
 }
 
 ul, ol {
     list-style-type: none;
 }
+
 table {
     margin-left: auto;
     margin-right: auto;
 }
+
 .img {
-    box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
 }
+
 header {
     background-color: #2594CC;
-    box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
 }
+
 .table-div {
     padding-bottom: 50px;
 }
 
-h1{
+h1 {
     color: purple;
-
 }
+
 hr {
-    box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
 }
 
 h2 {
@@ -47,32 +52,32 @@ main {
     background-image: url("https://images.pexels.com/photos/103123/pexels-photo-103123.jpeg?cs=srgb&dl=pexels-julian-jagtenberg-103123.jpg&fm=jpg");
     background-repeat: no-repeat;
     background-size: auto;
-    box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
 }
 
-table, th, td{
+table, th, td {
     border: 5px solid black;
     font-size: 1.5em;
-    box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
     padding: 10px;
 }
 
 /* unvisited link (:link) */
 a:link {
-    color:darkred;
+    color: darkred;
 }
 
 /* visited link (:visited) */
 a:visited {
-    color:black;
+    color: black;
 }
 
 /* mouse hover over link (:hover) */
 a:hover {
-    color:blue;
+    color: blue;
 }
 
 /* active/selected link (:active) */
 a:active {
-    color:green;
+    color: green;
 }
