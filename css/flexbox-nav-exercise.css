@@ -24,6 +24,10 @@ nav {
 ul {
     list-style-type: none;
 }
+img {
+    width: 40px;
+    padding: .5em;
+}
 
 .logo {
     margin: 0 auto;
@@ -34,8 +38,14 @@ ul {
 
 .nav-left {
     display: flex;
+    font-weight: bold;
 }
 
 .nav-right {
     display: flex;
+}
+
+.follow-us {
+    margin-top: 5px;
+    font-weight: bold;
 }
