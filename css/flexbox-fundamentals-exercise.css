@@ -44,7 +44,6 @@ h2, h3 {
     /* enter needed declarations here */
     display: flex;
     flex-direction: column;
-    align-content: space-evenly;
     justify-content: space-evenly;
 }
 
