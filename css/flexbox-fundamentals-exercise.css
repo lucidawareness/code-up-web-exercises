@@ -40,7 +40,7 @@ h2, h3 {
     height: 800px;
     background: white;
     padding: 1em;
-    margin: 0 auto;
+    margin: 20px auto 0;
     /* enter needed declarations here */
     display: flex;
     flex-direction: column;
