@@ -57,13 +57,16 @@ li {
     padding-bottom: 2em;
     font-size: .75em;
 }
+
 .icon {
     width: 20px;
     margin: 5px;
 }
+
 .icons-li {
     background-color: white;
 }
+
 .icons {
     width: 25px;
     margin: 0 5px;
