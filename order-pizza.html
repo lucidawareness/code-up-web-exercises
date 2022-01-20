@@ -141,7 +141,7 @@
                 </div>
                 <!--Nav Tab 1 Footer-->
                 <div class="card-footer">
-                    <button type="button" class="btn btn-primary float-right" id="btnNext">Next Step
+                    <button type="button" class="btn btn-primary float-right" id="toSauces">Next Step
                         <i class="bi bi-chevron-right"></i>
                     </button>
                 </div>
@@ -210,9 +210,9 @@
                 <!--Nav Tab 2 Footer-->
                 <div class="card-footer">
                     <div class="btn-group float-right" role="group" aria-label="Next Previous Buttons">
-                        <button type="button" class="btn btn-primary"><i class="bi bi-chevron-left"></i>Previous Step
+                        <button type="button" class="btn btn-primary" id="toSize"><i class="bi bi-chevron-left"></i>Previous Step
                         </button>
-                        <button type="button" class="btn btn-primary">Next Step
+                        <button type="button" class="btn btn-primary" id="toToppings">Next Step
                             <i class="bi bi-chevron-right"></i>
                         </button>
                     </div>
@@ -334,5 +334,19 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
+<script>
+	$('#toSauces').on('click', function (e) {
+		e.preventDefault()
+		$('#myTab li:nth-child(2) a').tab('show')
+	})
+	$('#toSize').on('click', function (e) {
+		e.preventDefault()
+		$('#myTab li:nth-child(1) a').tab('show')
+	})
+	$('#toToppings').on('click', function (e) {
+		e.preventDefault()
+		$('#myTab li:nth-child(3) a').tab('show')
+	})
+</script>
 </body>
 </html>
