@@ -2,3 +2,8 @@ hr {
     height: 5px;
     background-color: #95AA75;
 }
+@media (min-width: 768px) and (max-width: 992px){
+    .smaller {
+        font-size: 14px;
+    }
+}
