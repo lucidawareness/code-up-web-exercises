@@ -4,7 +4,7 @@ hr {
 }
 @media (max-width: 768px) {
     .smaller {
-        height: 150px;
+        height: 100px;
     }
     .smaller p {
         width: 100px;
