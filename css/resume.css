@@ -16,3 +16,8 @@ hr {
         font-size: 14px;
     }
 }
+@media (min-width: 768px){
+    .smaller {
+        font-size: 13px;
+    }
+}
