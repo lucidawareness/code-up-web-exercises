@@ -10,7 +10,7 @@
 <body>
 <div class="container-fluid text-center">
 
-    <h1 id="main-header">Hello World!</h1>
+    <h1 id="main-header" class="pt-5">Hello World!</h1>
     <ul>
         <li data-dbid="1">Item 5</li>
         <li data-dbid="2">Item 2</li>
@@ -32,58 +32,70 @@
     </div>
     <div id="reset-activate-all-div">
         <div id="activate-all-div">
-            <h1 id="activate-all-header"><b>Activate All The Actions</b></h1>
+            <h1 id="activate-all-header" class="py-3"><b>Activate All The Actions</b></h1>
             <button id="activate-all-btn">Click To Activate All Actions At Once!</button>
         </div>
         <div id="reload-div">
-            <h1 id="reload-header"><b>Reset The Elements</b></h1>
+            <h1 id="reload-header" class="py-3"><b>Reset The Elements</b></h1>
             <button id="reload-btn">Click To Reset The Elements!</button>
         </div>
     </div>
 
     <div id="ul-div">
-        <h1>Action Buttons</h1>
-        <ul>
-            <li><b>Action # 1</b><br>
-                <button id="btn1">Set inner html of mainHeader to "JavaScript is Cool"</button>
-                <br>
-                <br>
-                Revert Action #1<br>
-                <button id="btn1revert">Revert inner html of mainHeader</button>
-            </li>
+        <h1 class="py-3">Action Buttons</h1>
+        <div class="container">
+            <div class="row pb-4">
+                <div class="col">
+                    <b>Action # 1</b><br>
+                    <button id="btn1">Set inner html of mainHeader to "JavaScript is Cool"</button>
+                </div>
+                <div class="col">
+                    Revert Action #1<br>
+                    <button id="btn1revert">Revert inner html of mainHeader</button>
+                </div>
+            </div>
+            <div class="row pb-4">
+                <div class="col">
+                    <b>Action # 2</b><br>
+                    <button id="btn2">Set the text color of subHeader to blue</button>
+                </div>
+                <div class="col">
+                    Revert Action #2<br>
+                    <button id="btn2revert">Revert text color of subHeader to black</button>
+                </div>
+            </div>
+            <div class="row pb-4">
+                <div class="col">
+                    <b>Action # 3</b><br>
+                    <button id="btn3">Set text color on every other list item to grey</button>
+                </div>
+                <div class="col">
+                    Revert Action #3<br>
+                    <button id="btn3revert">Revert text color of list items to black</button>
+                </div>
+            </div>
+            <div class="row pb-4">
+                <div class="col">
+                    <b>Action # 4</b><br>
+                    <button id="btn4">Set text color of li with dbid = 1 to blue</button>
+                </div>
+                <div class="col">
+                    Revert Action #4<br>
+                    <button id="btn4revert">Revert text color of li to black</button>
+                </div>
+            </div>
             <br>
-            <li><b>Action # 2</b><br>
-                <button id="btn2">Set the text color of subHeader to blue</button>
-                <br>
-                <br>
-                Revert Action #2<br>
-                <button id="btn2revert">Revert text color of subHeader to black</button>
-            </li>
-            <br>
-            <li><b>Action # 3</b><br>
-                <button id="btn3">Set text color on every other list item to grey</button>
-                <br>
-                <br>
-                Revert Action #3<br>
-                <button id="btn3revert">Revert text color of list items to black</button>
-            </li>
-            <br>
-            <li><b>Action # 4</b><br>
-                <button id="btn4">Set text color of li with dbid = 1 to blue</button>
-                <br>
-                <br>
-                Revert Action #4<br>
-                <button id="btn4revert">Revert text color of li to black</button>
-            </li>
-            <br>
-            <li><b>Action # 5</b><br>
-                <button id="btn5">Change the text in the first sub paragraph to "Mission Accomplished!"</button>
-                <br>
-                <br>
-                Revert Action #5<br>
-                <button id="btn5revert">Revert text of the first sub paragraph</button>
-            </li>
-        </ul>
+            <div class="row pb-4">
+                <div class="col">
+                    <b>Action # 5</b><br>
+                    <button id="btn5">Change the text in the first sub paragraph to "Mission Accomplished!"</button>
+                </div>
+                <div class="col">
+                    Revert Action #5<br>
+                    <button id="btn5revert">Revert text of the first sub paragraph</button>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

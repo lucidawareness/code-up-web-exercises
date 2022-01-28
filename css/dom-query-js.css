@@ -22,6 +22,11 @@ li {
     font-size: 1.1em;
 }
 
+button {
+    border-radius: 5px;
+    padding: 5px 5px;
+}
+
 button:hover {background-color: #ffffff
 }
 
