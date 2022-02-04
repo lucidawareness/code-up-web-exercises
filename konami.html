@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="us-en">
 <head>
     <title>Konami Code</title>
 </head>
@@ -17,16 +17,15 @@
 			started = false,
 			count = 0;
 
+		$('#reset').click(function () {
+			location.reload();
+		})
+
 		$(document).keydown(function (e) {
 			let reset = function () {
 				started = false;
 				count = 0;
-				return;
 			};
-
-			$('#reset').click(function (){
-				location.reload();
-            })
 
 			let key = e.keyCode;
 
