@@ -113,6 +113,24 @@
     </ul>
 
 </div>
+
+<h1 id="image-title">Swap these images</h1>
+<div class="container flex">
+    <div class="img-container">
+        <div class="img-frame"><img class="img-1" src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?cs=srgb&dl=pexels-pixabay-373543.jpg&fm=jpg" alt=""></div>
+        <button class="swap-button swap-btn-1">Swap</button>
+    </div>
+
+    <div class="img-container">
+        <div class="img-frame"><img class="img-2" src="https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?cs=srgb&dl=pexels-aleksandar-pasaric-325185.jpg&fm=jpg" alt=""></div>
+        <button class="swap-button swap-btn-2">Swap</button>
+    </div>
+
+    <div class="img-container">
+        <div class="img-frame"><img class="img-3" src="https://images.pexels.com/photos/1202849/pexels-photo-1202849.jpeg?cs=srgb&dl=pexels-carrie-johnson-1202849.jpg&fm=jpg" alt=""></div>
+        <button class="swap-button swap-btn-3">Swap</button>
+    </div>
+</div>
 <script src="/js/jquery-2.2.4.js"></script>
 <script>
 	$(document).ready(function () {
@@ -137,6 +155,10 @@
 		$('li').click(function (){
 			$(this).parent().children().first().css('color', 'blue');
         });
+
+		$('.swap-btn-1').click(function (){
+			$('.img-1').attr('src')
+        })
 
 	});
 </script>
