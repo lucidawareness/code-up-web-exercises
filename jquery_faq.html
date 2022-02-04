@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1 id="page-title">National Parks FAQ's</h1>
-<div id="container">
+<div class="container">
 
     <button id="showHide">Show/ Hide Answers</button>
 
@@ -25,10 +25,10 @@
 
         <dt>3. How many employees are in the National Park Service?</dt>
         <dd class="invisible">
-            <ul>
+            <ol>
                 <li>Permanent, temporary, and seasonal employees: Approximately 20,000</li>
                 <li>Volunteers: More than 279,000 in 2019</li>
-            </ul>
+            </ol>
         </dd>
 
         <dt>4. How old is the National Park System?</dt>
@@ -54,10 +54,10 @@
 
         <dt>7. What is the largest national park site? Smallest?</dt>
         <dd class="invisible">
-            <ul>
+            <ol>
                 <li>Largest: Wrangell-St. Elias National Park and Preserve, AK, at 13.2 million acres</li>
                 <li>Smallest: Thaddeus Kosciuszko National Memorial, PA, at 0.02 acres</li>
-            </ul>
+            </ol>
         </dd>
 
         <dt>8. How many people visit the national parks?</dt>
@@ -65,12 +65,12 @@
 
         <dt>9. What is the National Park Service budget?</dt>
         <dd class="invisible">
-            <ul>
+            <ol>
                 <li>Fiscal Year (FY) 2014 Enacted: $2.98 billion</li>
                 <li>FY 2015 Enacted: $2.615 billion</li>
                 <li>FY 2016 Enacted:$2.851 billion</li>
                 <li>FY 2017 Enacted: $2.932 billion</li>
-            </ul>
+            </ol>
         </dd>
 
         <dt>10. Can I bring my pet to a national park?</dt>
@@ -78,6 +78,39 @@
             in some lodging facilities.
         </dd>
     </dl>
+
+</div>
+
+<h1 id="fun-facts-title">National Parks Fun Facts</h1>
+<div class="container">
+    <button id="lastLiYellow">Make the last list item's background yellow on each unordered list</button>
+
+    <p>FYI: Click on the headers to turn its list items bold</p>
+    <p>FYI: Click on any list item to turn the font of the first list item in that list blue</p>
+
+    <h3>Yellowstone</h3>
+    <ul>
+        <li>Yellowstone was established on March 1, 1872</li>
+        <li>It is the world's first National Park</li>
+        <li>It contains 3,472 square miles and measures 63 miles north to south and 54 miles east to west</li>
+        <li>The park is contained in three states: 96% in Wyoming, 3% in Montana, and 1% in Idaho</li>
+    </ul>
+
+    <h3>Yosemite</h3>
+    <ul>
+        <li>Yosemite might be our nation’s 3rd national park, but it sparked the idea of national parks</li>
+        <li>Yosemite’s granite rock formations glow like fire at sunset</li>
+        <li>The park’s diverse landscape supports more than 400 species</li>
+        <li>Yosemite is home to one of the tallest waterfalls in the world</li>
+    </ul>
+
+    <h3>Glacier National Park</h3>
+    <ul>
+        <li>Glacier National Park is a part of the world’s first international peace park</li>
+        <li>Glacier straddles the Continental Divide, allowing for extreme weather</li>
+        <li>Going-to-the-Sun Road is a spectacular marvel and a must-see on your trip to Glacier</li>
+        <li>Evidence of human use in the area dates back over 12,000 years</li>
+    </ul>
 
 </div>
 <script src="/js/jquery-2.2.4.js"></script>
@@ -90,6 +123,21 @@
 		$('dt').click(function (event) {
 			$(this).toggleClass('highlight');
 		});
+
+		$('#lastLiYellow').click(function (event){
+			$('ul').each(function (index){
+				$(this).children().last().css('background-color', '#FF0');
+            })
+        });
+
+        $('h3').click(function (){
+			$(this).next().css('font-weight', 'bold');
+        });
+
+		$('li').click(function (){
+			$(this).parent().children().first().css('color', 'blue');
+        });
+
 	});
 </script>
 </body>

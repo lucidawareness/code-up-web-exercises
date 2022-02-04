@@ -22,7 +22,7 @@ dd {
     margin-bottom: 1em;
 }
 
-#page-title{
+#page-title, #fun-facts-title{
     text-align: center;
     width: fit-content;
     margin: 0 auto;
@@ -30,7 +30,7 @@ dd {
     padding: 5px 20px;
     background-color: rgba(255, 255, 255, 0.7);
 }
-#container {
+.container {
     margin: 2em 1em;
     border: 2px solid black;
     padding: 10px 20px;
@@ -38,7 +38,7 @@ dd {
     border-radius: 10px;
 }
 
-#showHide {
+#showHide, #lastLiYellow {
     background-color: rgba(255, 255, 255, 0.7);
     margin-top: 1em;
 }
@@ -49,4 +49,8 @@ dd {
 
 .highlight {
     background-color: yellow;
+}
+
+li {
+    font-size: 1.2em;
 }
