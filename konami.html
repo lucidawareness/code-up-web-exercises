@@ -21,7 +21,7 @@
 			location.reload();
 		})
 
-		$(document).keydown(function (e) {
+		$(document).keyup(function (e) {
 			let reset = function () {
 				started = false;
 				count = 0;
@@ -50,6 +50,7 @@
 					alert('You now get 30 lives!');
 					$('#lives').text('30');
 					reset();
+					window.location.replace('https://youtu.be/y6120QOlsfU')
 				}
 			} else {
 				reset();
