@@ -117,17 +117,23 @@
 <h1 id="image-title">Swap these images</h1>
 <div class="container flex">
     <div class="img-container">
-        <div class="img-frame"><img class="img-1" src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?cs=srgb&dl=pexels-pixabay-373543.jpg&fm=jpg" alt=""></div>
+        <div class="img-frame"><img class="img-1"
+                                    src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?cs=srgb&dl=pexels-pixabay-373543.jpg&fm=jpg"
+                                    alt=""></div>
         <button class="swap-button swap-btn-1">Swap</button>
     </div>
 
     <div class="img-container">
-        <div class="img-frame"><img class="img-2" src="https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?cs=srgb&dl=pexels-aleksandar-pasaric-325185.jpg&fm=jpg" alt=""></div>
+        <div class="img-frame"><img class="img-2"
+                                    src="https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?cs=srgb&dl=pexels-aleksandar-pasaric-325185.jpg&fm=jpg"
+                                    alt=""></div>
         <button class="swap-button swap-btn-2">Swap</button>
     </div>
 
     <div class="img-container">
-        <div class="img-frame"><img class="img-3" src="https://images.pexels.com/photos/1202849/pexels-photo-1202849.jpeg?cs=srgb&dl=pexels-carrie-johnson-1202849.jpg&fm=jpg" alt=""></div>
+        <div class="img-frame"><img class="img-3"
+                                    src="https://images.pexels.com/photos/1202849/pexels-photo-1202849.jpeg?cs=srgb&dl=pexels-carrie-johnson-1202849.jpg&fm=jpg"
+                                    alt=""></div>
         <button class="swap-button swap-btn-3">Swap</button>
     </div>
 </div>
@@ -142,24 +148,51 @@
 			$(this).toggleClass('highlight');
 		});
 
-		$('#lastLiYellow').click(function (event){
-			$('ul').each(function (index){
+		$('#lastLiYellow').click(function (event) {
+			$('ul').each(function (index) {
 				$(this).children().last().css('background-color', '#FF0');
-            })
-        });
+			})
+		});
 
-        $('h3').click(function (){
+		$('h3').click(function () {
 			$(this).next().css('font-weight', 'bold');
-        });
+		});
 
-		$('li').click(function (){
+		$('li').click(function () {
 			$(this).parent().children().first().css('color', 'blue');
-        });
+		});
 
-		$('.swap-btn-1').click(function (){
-			$('.img-1').attr('src')
-        })
+		let img1Src = 'https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?cs=srgb&dl=pexels-pixabay-373543.jpg&fm=jpg'
 
+		let img2Src = 'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?cs=srgb&dl=pexels-aleksandar-pasaric-325185.jpg&fm=jpg'
+
+		let img3Src = 'https://images.pexels.com/photos/1202849/pexels-photo-1202849.jpeg?cs=srgb&dl=pexels-carrie-johnson-1202849.jpg&fm=jpg'
+
+		$('.swap-btn-1').click(function () {
+			$('.img-1').attr('src', img2Src);
+			$('.img-2').attr('src', img3Src);
+			$('.img-3').attr('src', img1Src);
+		})
+
+
+		$('.swap-btn-2').click(function () {
+			let random = (Math.floor(Math.random() * 2));
+			if (random === 0) {
+				$('.img-1').attr('src', img2Src);
+				$('.img-2').attr('src', img1Src);
+				$('.img-3').attr('src', img3Src);
+			} else {
+				$('.img-1').attr('src', img1Src);
+				$('.img-2').attr('src', img3Src);
+				$('.img-3').attr('src', img2Src);
+			}
+		})
+
+		$('.swap-btn-3').click(function () {
+			$('.img-1').attr('src', img3Src);
+			$('.img-2').attr('src', img1Src);
+			$('.img-3').attr('src', img2Src);
+		})
 	});
 </script>
 </body>
