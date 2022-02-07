@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Online Store</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <style>
+        #page-title {
+            width: fit-content;
+            margin: 20px auto;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
 
 
-    <h1 class="text-center pb-3">My Tool Store</h1>
+    <h1 id="page-title" class="text-center rounded px-3 py-2 bg-dark text-white">My Tool Store</h1>
+
+    <button id="refresh" class="mr-2 mb-3">Refresh List</button>
 
     <table class="table table-striped table-bordered table-hover" id="products">
         <thead class="thead-dark">
@@ -39,22 +47,36 @@
 	(function () {
 		"use strict";
 		// TODO: Create an AJAX GET request for the file under data/inventory.json
-		$.ajax("/data/inventory.json").done(function (data) {
+		function onSuccess(data) {
+			// TODO: Take the data from inventory.json and append it to the products table
+			//       HINT: Your data should come back as a JSON object; use console.log() to inspect
+			//             its contents and fields
+			//       HINT: You will want to target #insertProducts for your new HTML elements
 			for (let i = 0; i < data.length; i++) {
-                $('#insertProducts').append(`
+				$('#insertProducts').append(`
                 <tr class="text-center">
                     <th scope="row">${data[i].title}</th>
                     <td>${data[i].quantity}</td>
                     <td>\$${data[i].price}</td>
-                    <td>${data[i].categories}</td>
+                    <td class="font-weight-bold">${data[i].categories}</td>
                 </tr>
                 `)
-			};
-		});
-		// TODO: Take the data from inventory.json and append it to the products table
-		//       HINT: Your data should come back as a JSON object; use console.log() to inspect
-		//             its contents and fields
-		//       HINT: You will want to target #insertProducts for your new HTML elements
+			}
+		};
+
+		$.ajax("/data/inventory.json").done(onSuccess);
+
+		$('#refresh').click(function (){
+			$('#insertProducts').html('')
+			$.ajax("/data/inventory.json").done(onSuccess);
+        })
+
+
+		// Add items to table
+
+
+
+
 	})();
 </script>
 
