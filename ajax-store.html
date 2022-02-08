@@ -51,9 +51,6 @@
 		// TODO: Create an AJAX GET request for the file under data/inventory.json
 		function onSuccess(data) {
 			// TODO: Take the data from inventory.json and append it to the products table
-			//       HINT: Your data should come back as a JSON object; use console.log() to inspect
-			//             its contents and fields
-			//       HINT: You will want to target #insertProducts for your new HTML elements
 			for (let i = 0; i < data.length; i++) {
 				$('#insertProducts').append(`
                 <tr class="text-center">
@@ -65,16 +62,13 @@
                 `)
 			}
 		};
-
+        //Calls function
 		$.ajax("/data/inventory.json").done(onSuccess);
-
+        //Ability to refresh table without refreshing entire page
 		$('#refresh').click(function (){
 			$('#insertProducts').html('')
 			$.ajax("/data/inventory.json").done(onSuccess);
         })
-
-
-		// Add items to table
 
 
 
