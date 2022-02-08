@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <title>Map Box API</title>
 
-<!--Mapbox CDN-->
+    <!--Mapbox CDN-->
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet'/>
-<!--Bootstrap CDN-->
+    <!-- Load the `mapbox-gl-geocoder` plugin. -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
+    <!--Bootstrap CDN-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
@@ -34,7 +37,7 @@
         <div class="mt-3 ml-2" id='map'></div>
         <div id="restaurantListDiv" class="ml-4 mt-3">
             <h1 class="p-2 rounded bg-white text-center" id="page-title">My favorite restaurants</h1>
-<!--            List of favorite restaurants-->
+            <!--            List of favorite restaurants-->
             <table class="table bg-white table-striped rounded mt-3">
                 <thead class="thead-light">
                 <tr>
@@ -52,7 +55,7 @@
         </div>
     </div>
     <div class="row mt-3">
-<!--        Option to change zoom level with select input-->
+        <!--        Option to change zoom level with select input-->
         <label for="zoom" class="text-white px-3">Choose a zoom level:</label>
 
         <select class="rounded" name="zoom-levels" id="zoom">
@@ -78,7 +81,7 @@
 <script>
 
 	(function () {
-        //Mapbox map created
+		//Mapbox map created
 		mapboxgl.accessToken = 'pk.eyJ1IjoibHVjaWRhd2FyZW5lc3MiLCJhIjoiY2t6ZDc3aGVjMnY5YTJwbzJ1emdmNjEzbSJ9.-defpzf2vmE5LX-LBADjtQ';
 		let map = new mapboxgl.Map({
 			container: 'map',
@@ -90,27 +93,36 @@
 			]
 		});
 
+		// Add the control to the map.
+		map.addControl(
+			new MapboxGeocoder({
+				accessToken: mapboxgl.accessToken,
+				mapboxgl: mapboxgl
+			})
+		);
+
+
 		//Array of objects containing details of favorite restaurants
 		let restaurants = [{
 			"name": "Sixty Vines",
 			"address": "500 Crescent Ct Suite 160, Dallas, TX 75201",
 			"website": " https://sixtyvines.com",
-            "websiteShorthand": "sixtyvines.com",
+			"websiteShorthand": "sixtyvines.com",
 			"position": [-96.80495, 32.79379]
 		}, {
 			"name": "Meso Maya",
 			"address": "5280 Belt Line Rd, Addison, TX 75254",
 			"website": "https://www.mesomaya.com",
-            "websiteShorthand": "mesomaya.com",
+			"websiteShorthand": "mesomaya.com",
 			"position": [-96.81877, 32.95352]
 		}, {
 			"name": "Tortugas Mexican Kitchen",
 			"address": "6010 Seawall Blvd, Galveston, TX 77551",
 			"website": "https://tortugacantina.com",
-            "websiteShorthand": "tortugacantina.com",
+			"websiteShorthand": "tortugacantina.com",
 			"position": [-94.82559, 29.26749]
 		}]
-        // populates table with details of each restaurant
+		// populates table with details of each restaurant
 		restaurants.forEach(function (restaurant, index) {
 			let restaurantNum = index + 1;
 			$('#tableBody').append(`
@@ -121,11 +133,11 @@
                     <td><a href="${restaurant.website}" target="_blank">${restaurant.websiteShorthand}</a></td>
                 </tr>
 			`);
-            //Creates a marker for each restaurant/ part of forEach loop
+			//Creates a marker for each restaurant/ part of forEach loop
 			var marker = new mapboxgl.Marker()
 				.setLngLat(restaurant.position)
 				.addTo(map);
-            //Creates a popup for each restaurant in array/ part of forEach loop
+			//Creates a popup for each restaurant in array/ part of forEach loop
 			var alamoPopup = new mapboxgl.Popup()
 				.setHTML(`
                     <h3>${restaurant.name}</h3>
@@ -134,7 +146,7 @@
 
                         `);
 
-            //Links the popup to a marker
+			//Links the popup to a marker
 			marker.setPopup(alamoPopup)
 		});
 
@@ -142,13 +154,13 @@
 		$('select').change(function () {
 			if ($(this).val() === 5) {
 				map.setZoom($(this).val());
-			} else if ($(this).val() === 10){
+			} else if ($(this).val() === 10) {
 				map.setZoom($(this).val());
 			}
 			map.setZoom($(this).val());
 		})
 
-        //Creates a fly to when a table row is clicked using the currently clicked restaurant position
+		//Creates a fly to when a table row is clicked using the currently clicked restaurant position
 		$('tr').each(function (index) {
 			let indexNum = index - 1;
 			$(this).click(function () {
@@ -165,14 +177,14 @@
 			})
 		})
 
-        //Creates ability to reset the map to the original load instance
-        $('#re-center').click(function (){
+		//Creates ability to reset the map to the original load instance
+		$('#re-center').click(function () {
 			map.setZoom(10);
 			map.setCenter([
 				-96.7969,
 				32.7763
 			])
-        })
+		})
 
 
 	})();
