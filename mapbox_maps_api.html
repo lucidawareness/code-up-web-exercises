@@ -57,6 +57,7 @@
             <option value="15" selected>15</option>
             <option value="20">20</option>
         </select>
+        <button class="ml-5" id="re-center">Reset Map</button>
     </div>
 </div>
 
@@ -102,7 +103,7 @@
 			"website": "mesomaya.com",
 			"position": restaurant2LangLong
 		}, {
-			"name": "Tortuga Mexican Kitchen",
+			"name": "Tortugas Mexican Kitchen",
 			"address": "6010 Seawall Blvd, Galveston, TX 77551",
 			"website": "tortugacantina.com",
 			"position": restaurant3LangLong
@@ -140,8 +141,8 @@
 			$(this).click(function () {
 				map.flyTo({
 					center: restaurants[indexNum].position,
-					zoom: 15,
-					speed: 1,
+					zoom: 18,
+					speed: 1.5,
 					curve: 1,
 					easing(t) {
 						return t;
@@ -159,6 +160,14 @@
             }
 			map.setZoom($(this).val());
 		})
+
+        $('#re-center').click(function (){
+			map.setZoom(10);
+			map.setCenter([
+				-96.7969,
+				32.7763
+			])
+        })
 
 
 	})();
