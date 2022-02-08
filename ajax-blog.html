@@ -22,6 +22,10 @@
         #api-container {
             display: none;
         }
+
+        #api-posts, #original-posts {
+            margin-left: 1.8em;
+        }
     </style>
 
 </head>
@@ -86,7 +90,7 @@
                     <div class="card col-11 m-4" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">${data[i].title}</h5>
-                    <p class="card-text overflow-auto" id="card-content">${data[i].body}</p>
+                    <p class="card-text overflow-auto" id="card-api-content">${data[i].body}</p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">User ID: ${data[i].userId}</li>
