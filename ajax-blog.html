@@ -63,6 +63,7 @@
 		function originalOnSuccess(data) {
             //Loop through each posts
 			for (let i = 0; i < data.length; i++) {
+				//Adds each post to posts div
 				$('#posts').append(`
 			<div class="card col-8 col-lg-4 m-4 text-center" style="width: 18rem;">
                 <div class="card-body">
@@ -77,7 +78,7 @@
 `)
 			}
 		}
-
+        //function called when button to see api posts is clicked
 		function apiOnSuccess(data) {
 				$('#api-posts-container').html('');
 			for (let i = 0; i < 8; i++) {
@@ -95,14 +96,18 @@
 				`)
 			}}
 
+        //Calls original ajax function on load
 		$.ajax("/data/blog.json").done(originalOnSuccess);
 
+        //Hides original posts and shows posts from external API
 		$('#api-posts').click(function (){
             $('#original-container').css('display', 'none');
             $('#api-container').css('display', 'block');
+			//Calls external API function to populate from external API
 			$.ajax("https://jsonplaceholder.typicode.com/posts").done(apiOnSuccess);
         });
 
+        //Reloads original posts from local json file
 		$('#original-posts').click(function (){
 			$('#api-container').css('display', 'none');
 			$('#original-container').css('display', 'block');
