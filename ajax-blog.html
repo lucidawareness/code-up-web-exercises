@@ -65,7 +65,7 @@
 			for (let i = 0; i < data.length; i++) {
 				//Adds each post to posts div
 				$('#posts').append(`
-			<div class="card col-8 col-lg-4 m-4 text-center" style="width: 18rem;">
+			<div class="card col-11 m-4" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">${data[i].title}</h5>
                     <p class="card-text overflow-auto" id="card-content">${data[i].content}</p>
@@ -83,7 +83,7 @@
 				$('#api-posts-container').html('');
 			for (let i = 0; i < 8; i++) {
 				$('#api-posts-container').append(`
-                    <div class="card col-8 col-md-4 m-4 text-center" style="width: 18rem;">
+                    <div class="card col-11 m-4" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">${data[i].title}</h5>
                     <p class="card-text overflow-auto" id="card-content">${data[i].body}</p>
