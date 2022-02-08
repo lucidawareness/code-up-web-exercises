@@ -30,6 +30,10 @@
         ul {
             list-style-type: none;
         }
+
+        tr:hover {
+            cursor: pointer;
+        }
     </style>
 
 </head>
@@ -39,6 +43,7 @@
         <div class="mt-3 ml-2" id='map'></div>
         <div id="restaurantListDiv" class="ml-4 mt-3">
             <h1 class="p-2 rounded bg-white text-center" id="page-title">My favorite restaurants</h1>
+            <p class="bg-warning text-center">FYI Click on table row to fly to that rows restaurant's location</p>
             <!--            List of favorite restaurants-->
             <table class="table bg-white table-striped rounded mt-3">
                 <thead class="thead-light">
@@ -81,7 +86,7 @@
 <!--CDN Jquery File-->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script src="js/keys.js" ></script>
+<script src="js/keys.js"></script>
 <script>
 
 	(function () {
@@ -97,7 +102,7 @@
 			]
 		});
 
-		// Add the control to the map.
+		// Adds the search control to the map.
 		map.addControl(
 			new MapboxGeocoder({
 				accessToken: mapboxgl.accessToken,
@@ -154,11 +159,36 @@
 			marker.setPopup(alamoPopup);
 
 			//Removes markers on button click
-			$('#remove-markers').click(function (){
+			$('#remove-markers').click(function () {
 				marker.remove();
 			});
+
+
 		});
 
+		let counttx = 0, countup = true;
+
+		function timerr() {
+			if (countup) {
+				++counttx;
+
+				if (counttx >= 3)
+					countup = false;
+			} else {
+				--counttx;
+
+				if (counttx <= 0)
+					countup = true;
+			}
+
+			console.log(counttx);
+		}
+
+		let intervalId = setInterval(timerr, 1000);
+		let timeout = function(){
+			clearInterval(intervalId);
+        }
+		setTimeout(timeout, 2000);
 
 
 		//Creates ability to change zoom level based on IF value of select input has changed
