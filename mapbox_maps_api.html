@@ -65,7 +65,8 @@
             <option value="15" selected>15</option>
             <option value="20">20</option>
         </select>
-        <button class="btn btn-light ml-5" id="re-center">Reset Map</button>
+        <button class="btn btn-light ml-4" id="re-center">Reset Map</button>
+        <button class="btn btn-light ml-4" id="remove-markers">Remove Markers</button>
     </div>
 </div>
 
@@ -80,11 +81,12 @@
 <!--CDN Jquery File-->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="js/keys.js" ></script>
 <script>
 
 	(function () {
 		//Mapbox map created
-		mapboxgl.accessToken = 'pk.eyJ1IjoibHVjaWRhd2FyZW5lc3MiLCJhIjoiY2t6ZDc3aGVjMnY5YTJwbzJ1emdmNjEzbSJ9.-defpzf2vmE5LX-LBADjtQ';
+		mapboxgl.accessToken = KEY_API_MAPBOX;
 		let map = new mapboxgl.Map({
 			container: 'map',
 			style: 'mapbox://styles/mapbox/streets-v11',
@@ -136,11 +138,11 @@
                 </tr>
 			`);
 			//Creates a marker for each restaurant/ part of forEach loop
-			var marker = new mapboxgl.Marker()
+			let marker = new mapboxgl.Marker()
 				.setLngLat(restaurant.position)
 				.addTo(map);
 			//Creates a popup for each restaurant in array/ part of forEach loop
-			var alamoPopup = new mapboxgl.Popup()
+			let alamoPopup = new mapboxgl.Popup()
 				.setHTML(`
                     <h3>${restaurant.name}</h3>
                     <p>Address: ${restaurant.address}</p>
@@ -149,8 +151,15 @@
                         `);
 
 			//Links the popup to a marker
-			marker.setPopup(alamoPopup)
+			marker.setPopup(alamoPopup);
+
+			//Removes markers on button click
+			$('#remove-markers').click(function (){
+				marker.remove();
+			});
 		});
+
+
 
 		//Creates ability to change zoom level based on IF value of select input has changed
 		$('select').change(function () {
