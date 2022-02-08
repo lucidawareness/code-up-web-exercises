@@ -89,31 +89,26 @@
 				32.7763
 			]
 		});
-        // restaurant location saved in variables
-		let restaurant1LangLong = [-96.80495, 32.79379];
 
-		let restaurant2LangLong = [-96.81877, 32.95352];
-
-		let restaurant3LangLong = [-94.82559, 29.26749];
         //Array of objects containing details of favorite restaurants
 		let restaurants = [{
 			"name": "Sixty Vines",
 			"address": "500 Crescent Ct Suite 160, Dallas, TX 75201",
 			"website": " https://sixtyvines.com",
             "websiteShorthand": "sixtyvines.com",
-			"position": restaurant1LangLong
+			"position": [-96.80495, 32.79379]
 		}, {
 			"name": "Meso Maya",
 			"address": "5280 Belt Line Rd, Addison, TX 75254",
 			"website": "https://www.mesomaya.com",
             "websiteShorthand": "mesomaya.com",
-			"position": restaurant2LangLong
+			"position": [-96.81877, 32.95352]
 		}, {
 			"name": "Tortugas Mexican Kitchen",
 			"address": "6010 Seawall Blvd, Galveston, TX 77551",
 			"website": "https://tortugacantina.com",
             "websiteShorthand": "tortugacantina.com",
-			"position": restaurant3LangLong
+			"position": [-94.82559, 29.26749]
 		}]
         // populates table with details of each restaurant
 		restaurants.forEach(function (restaurant, index) {
