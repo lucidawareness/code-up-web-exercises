@@ -32,9 +32,9 @@
     <div class="row">
         <div id='map'></div>
         <div id="restaurantListDiv" class="ml-4 mt-3">
-            <h1 class="p-2 rounded bg-white">My favorite restaurants</h1>
+            <h1 class="p-2 rounded bg-white text-center" id="page-title">My favorite restaurants</h1>
             <table class="table bg-white table-striped rounded mt-3">
-                <thead>
+                <thead class="thead-light">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
@@ -50,11 +50,11 @@
         </div>
     </div>
     <div class="row">
-        <label for="cars" class="text-white px-3">Choose a zoom level:</label>
+        <label for="zoom" class="text-white px-3">Choose a zoom level:</label>
 
         <select name="zoom-levels" id="zoom">
             <option value="5">5</option>
-            <option value="15">15</option>
+            <option value="15" selected>15</option>
             <option value="20">20</option>
         </select>
     </div>
@@ -132,13 +132,12 @@
                         `);
 
 
-
 			marker.setPopup(alamoPopup)
 		});
 
-		$('tr').each(function (index){
-			let indexNum = index -1;
-			$(this).click(function (){
+		$('tr').each(function (index) {
+			let indexNum = index - 1;
+			$(this).click(function () {
 				map.flyTo({
 					center: restaurants[indexNum].position,
 					zoom: 15,
@@ -150,13 +149,16 @@
 				});
 
 			})
-        })
+		})
 
-		$('option').each(function (index){
-			$(this).click(function (){
-				console.log(this.val())
-            });
-        })
+		$('select').change(function () {
+			if ($(this).val() === 5) {
+				map.setZoom($(this).val());
+            } else if ($(this).val() === 10){
+				map.setZoom($(this).val());
+            }
+			map.setZoom($(this).val());
+		})
 
 
 	})();
