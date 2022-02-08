@@ -18,7 +18,7 @@
         #map, #restaurantListDiv {
             /* the width and height may be set to any size */
             width: 48vw;
-            height: 100vh;
+            height: 80vh;
         }
 
         ul {
@@ -137,11 +137,12 @@
 		});
 
 		$('tr').each(function (index){
+			let indexNum = index -1;
 			$(this).click(function (){
 				map.flyTo({
-					center: restaurant3LangLong,
-					zoom: 9,
-					speed: 0.5,
+					center: restaurants[indexNum].position,
+					zoom: 15,
+					speed: 1,
 					curve: 1,
 					easing(t) {
 						return t;
@@ -151,7 +152,11 @@
 			})
         })
 
-		console.log($('#zoom').find(":selected").text())
+		$('option').each(function (index){
+			$(this).click(function (){
+				console.log(this.val())
+            });
+        })
 
 
 	})();
