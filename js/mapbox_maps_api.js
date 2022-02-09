@@ -15,14 +15,14 @@
 	map.on('click', function (e) {
 		console.log(e);
 	})
-
+	//Creates marker and adds to map
 	function getMarker(coordinates, el) {
 		return new mapboxgl.Marker(el)
 			.setLngLat(coordinates)
 			.addTo(map);
 
 	}
-
+	//Creates pop up and adds to map
 	function makePopup(restaurant) {
 		return new mapboxgl.Popup()
 			.setHTML(`
