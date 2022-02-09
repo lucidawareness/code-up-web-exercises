@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+}
+
+#map {
+    /* the width and height may be set to any size */
+    width: 100%;
+    height: 50vh;
+}
+
+#restaurantListDiv {
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+tr:hover {
+    cursor: pointer;
+}
+
+.marker {
+    display: block;
+    border: 1px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+}
+
+.mapboxgl-marker {
+    -webkit-animation: glide 1s ease-in-out alternate 2s;
+}
+
+@-webkit-keyframes glide {
+    from {
+        left: 0px;
+        top: 0px;
+    }
+
+    to {
+        left: 0px;
+        top: -10px;
+    }
+
+}

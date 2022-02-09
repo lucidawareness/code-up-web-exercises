@@ -22,7 +22,13 @@
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="js/keys.js"></script>
 <script>
-
+	$.get("http://api.openweathermap.org/data/2.5/weather", {
+		APPID: OPEN_WEATHER_APPID,
+		q:     "San Antonio, US",
+        units: "imperial"
+	}).done(function(data) {
+		console.log(data);
+	});
 </script>
 </body>
 </html>
