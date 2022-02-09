@@ -34,6 +34,32 @@
         tr:hover {
             cursor: pointer;
         }
+
+        .marker {
+            display: block;
+            border: 1px solid black;
+            border-radius: 50%;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .mapboxgl-marker {
+            -webkit-animation: glide 1s ease-in-out alternate 2s;
+        }
+
+        @-webkit-keyframes glide {
+            from {
+                left: 0px;
+                top: 0px;
+            }
+
+            to {
+                left: 0px;
+                top: -10px;
+            }
+
+        }
+
     </style>
 
 </head>
@@ -70,8 +96,8 @@
             <option value="15" selected>15</option>
             <option value="20">20</option>
         </select>
-        <button class="btn btn-light ml-4" id="re-center">Reset Map</button>
-        <button class="btn btn-light ml-4" id="remove-markers">Remove Markers</button>
+        <button class="btn btn-light ml-4" id="re-center">Recenter Map</button>
+        <button class="btn btn-light ml-4" id="hide-markers">Toggle Markers Display</button>
     </div>
 </div>
 
@@ -101,6 +127,19 @@
 				32.7763
 			]
 		});
+        //Forward geopcoding set up
+		function geocode(search, token) {
+			var baseUrl = 'https://api.mapbox.com';
+			var endPoint = '/geocoding/v5/mapbox.places/';
+			return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+				.then(function (res) {
+					return res.json();
+					// to get all the data from the request, comment out the following three lines...
+				}).then(function (data) {
+					return data.features[0].center;
+				});
+		}
+
 
 		// Adds the search control to the map.
 		map.addControl(
@@ -117,20 +156,30 @@
 			"address": "500 Crescent Ct Suite 160, Dallas, TX 75201",
 			"website": " https://sixtyvines.com",
 			"websiteShorthand": "sixtyvines.com",
-			"position": [-96.80495, 32.79379]
+			"position": [-96.80495, 32.79379],
+			"image_url": "url(https://sixtyvines.com/static/d50af3fac5380d4b1112fa7df3a0fef6/45cca/index-1.webp)"
 		}, {
 			"name": "Meso Maya",
 			"address": "5280 Belt Line Rd, Addison, TX 75254",
 			"website": "https://www.mesomaya.com",
 			"websiteShorthand": "mesomaya.com",
-			"position": [-96.81877, 32.95352]
+			"position": [-96.81877, 32.95352],
+			"image_url": "url(https://www.mesomaya.com/wp-content/uploads/2018/03/Downtown.jpg)"
 		}, {
 			"name": "Tortugas Mexican Kitchen",
 			"address": "6010 Seawall Blvd, Galveston, TX 77551",
 			"website": "https://tortugacantina.com",
 			"websiteShorthand": "tortugacantina.com",
-			"position": [-94.82559, 29.26749]
+			"position": [-94.82559, 29.26749],
+			"image_url": "url(https://tortugacantina.com/wp-content/uploads/2021/03/Tortuga_logo_notagline-1-230x116.png)"
 		}]
+
+		// the  geocode method from mapbox-geocoder-utils.js
+		geocode(restaurants[0].position, mapboxgl.accessToken).then(function (result) {
+			map.setCenter(result);
+			map.setZoom(15);
+		});
+
 		// populates table with details of each restaurant
 		restaurants.forEach(function (restaurant, index) {
 			let restaurantNum = index + 1;
@@ -143,7 +192,17 @@
                 </tr>
 			`);
 			//Creates a marker for each restaurant/ part of forEach loop
-			let marker = new mapboxgl.Marker()
+			const el = document.createElement('div');
+			const width = 75;
+			const height = 75;
+			el.className = `marker`;
+			el.style.backgroundImage = restaurant.image_url;
+			el.style.width = `${width}px`;
+			el.style.height = `${height}px`;
+			el.style.backgroundSize = '100%';
+
+            // Add markers to the map.
+			let marker = new mapboxgl.Marker(el)
 				.setLngLat(restaurant.position)
 				.addTo(map);
 			//Creates a popup for each restaurant in array/ part of forEach loop
@@ -158,37 +217,12 @@
 			//Links the popup to a marker
 			marker.setPopup(alamoPopup);
 
-			//Removes markers on button click
-			$('#remove-markers').click(function () {
-				marker.remove();
-			});
-
-
 		});
 
-		let counttx = 0, countup = true;
-
-		function timerr() {
-			if (countup) {
-				++counttx;
-
-				if (counttx >= 3)
-					countup = false;
-			} else {
-				--counttx;
-
-				if (counttx <= 0)
-					countup = true;
-			}
-
-			console.log(counttx);
-		}
-
-		let intervalId = setInterval(timerr, 1000);
-		let timeout = function(){
-			clearInterval(intervalId);
-        }
-		setTimeout(timeout, 2000);
+		//Hides markers on button click
+		$('#hide-markers').click(function () {
+			$( ".marker" ).toggle();
+		});
 
 
 		//Creates ability to change zoom level based on IF value of select input has changed
@@ -201,7 +235,7 @@
 			map.setZoom($(this).val());
 		})
 
-		//Creates a fly to when a table row is clicked using the currently clicked restaurant position
+		//Creates a flyTo when a table row is clicked using the currently clicked restaurants physical position
 		$('tr').each(function (index) {
 			let indexNum = index - 1;
 			$(this).click(function () {
@@ -218,7 +252,7 @@
 			})
 		})
 
-		//Creates ability to reset the map to the original load instance
+		//Creates ability to recenter the map to the original load instance
 		$('#re-center').click(function () {
 			map.setZoom(10);
 			map.setCenter([
