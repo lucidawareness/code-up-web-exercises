@@ -88,13 +88,6 @@
 		//Adds map box search to html
 		document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
-		// function setCenteredCity() {
-		// 	let inputValue = $(".mapboxgl-ctrl-geocoder--input").val();
-		// 	// console.log(inputValue);
-		// }
-        //
-		// setCenteredCity()
-
 		function onLoadWeatherData() {
 			map.on('load', function (e) {
 				let center = map.getCenter();
@@ -242,10 +235,6 @@
 		// }
 
 		// Todo: Add feature to get weather details after submit from input box
-
-		// Todo: Add feature to get weather details after click on point of map
-
-		//Todo: Add feature that populates cards with weather details 5-day forecast and top right city name
 
 	})();
 </script>
