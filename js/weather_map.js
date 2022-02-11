@@ -15,13 +15,6 @@
 		]
 	});
 
-	//Reverse geocoder to get city name
-	function reverseGeocoding(center){
-		$.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${center.lng},${center.lat}.json?&access_token=${KEY_API_MAPBOX}`, {}).done(function (reverseGeocode){
-			// console.table(reverseGeocode);
-		})
-	}
-
 	//Creates map box search box
 	const geocoder = new MapboxGeocoder({
 		accessToken: mapboxgl.accessToken,
@@ -30,24 +23,12 @@
 	//Adds map box search to html
 	document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
-	function onLoadWeatherData() {
-		map.on('load', function (e) {
-			let center = map.getCenter();
-			sendQueryToOpenWeather(center);
+	//Reverse geocoder to get city name
+	function reverseGeocoding(center){
+		$.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${center.lng},${center.lat}.json?&access_token=${KEY_API_MAPBOX}`, {}).done(function (reverseGeocode){
+			// console.table(reverseGeocode);
 		})
 	}
-
-	onLoadWeatherData();
-
-	//Gets lnglat from map after zoom ends to pass to weather api
-	function getLnglatAfterMapZoomEnds() {
-		map.on('zoomend', function (e) {
-			let center = map.getCenter();
-			sendQueryToOpenWeather(center);
-		})
-	}
-
-	getLnglatAfterMapZoomEnds()
 
 	//Sends center of map to open weather api with value input as param
 	function sendQueryToOpenWeather(center) {
@@ -60,13 +41,58 @@
 		});
 	}
 
+	//Called when map finishes loading
+	function onLoadWeatherData() {
+		map.on('load', function (e) {
+			let center = map.getCenter();
+			sendQueryToOpenWeather(center);
+		})
+	}
+	onLoadWeatherData();
+
+	//Gets lnglat from map after zoom ends to pass to weather api
+	function getLnglatAfterMapZoomEnds() {
+		map.on('zoomend', function (e) {
+			let center = map.getCenter();
+			sendQueryToOpenWeather(center);
+		})
+	}
+	getLnglatAfterMapZoomEnds()
+
+	//On click of map point, get coords and send to open weather api for weather info of location clicked on
+	function latLonOnClick() {
+		map.on('click', function (e) {
+			console.log(e.lngLat)
+			// Create a new marker.
+			const marker = new mapboxgl.Marker({
+				draggable: true
+			})
+				.setLngLat(e.lngLat)
+				.addTo(map);
+			map.setCenter(e.lngLat);
+			afterDropCoords(marker);
+			let markerCenter = map.getCenter();
+			sendQueryToOpenWeather(markerCenter)
+		})
+	}
+	latLonOnClick()
+
+	//If marker is dragged call open weather api with updated location of marker
+	function afterDropCoords(marker) {
+		marker.on('dragend', function () {
+			const lngLat = marker.getLngLat();
+			map.setCenter(lngLat);
+			console.log(lngLat);
+			sendQueryToOpenWeather(lngLat)
+		})
+	}
+
 	function populateWeatherCards(weatherData) {
-		// console.log(weatherData);
 		let unix_timestamp = weatherData.current.dt;
-		let date = new Date(unix_timestamp * 1000);
-		// console.log(date);
+		let date = new Date(unix_timestamp * 1000);// console.log(date);
 
 		let dailyArr = weatherData.daily;
+
 		dailyArr.forEach(function (day, index) {
 			if (index > 4) {
 				return
@@ -88,10 +114,6 @@
 
 			let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
-
-			// console.table(day.weather[0])
-			// console.log(day.weather[0].description);
-			// console.log(`Day:${index}, ${date} `)
 			$('#card-container').append(`
 				<div class="card mt-4 ml-3 col-10 col-lg-2 px-0" style="width: 18rem;">
             <div class="card-header text-center">
@@ -112,35 +134,6 @@
         </div>
 				`);
 
-		})
-	}
-
-	//On click of map point, get coords and send to open weather api for weather info of location clicked on
-	function latLonOnClick() {
-		map.on('click', function (e) {
-			console.log(e.lngLat)
-			// Create a new marker.
-			const marker = new mapboxgl.Marker({
-				draggable: true
-			})
-				.setLngLat(e.lngLat)
-				.addTo(map);
-			map.setCenter(e.lngLat);
-			afterDropCoords(marker);
-			let markerCenter = map.getCenter();
-			sendQueryToOpenWeather(markerCenter)
-		})
-	}
-
-	latLonOnClick()
-
-	//If marker is dragged call open weather api with updated location of marker
-	function afterDropCoords(marker) {
-		marker.on('dragend', function () {
-			const lngLat = marker.getLngLat();
-			map.setCenter(lngLat);
-			console.log(lngLat);
-			sendQueryToOpenWeather(lngLat)
 		})
 	}
 
