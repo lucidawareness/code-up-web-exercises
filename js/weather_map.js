@@ -27,6 +27,7 @@
 			sendQueryToOpenWeather(center);
 		})
 	}
+
 	onLoadWeatherData();
 
 	//Sends center of map to open weather api with value input as param
@@ -88,30 +89,82 @@
 			let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
 			$('#card-container').append(`
-				<div class="card px-0">
-            <div class="card-header text-center">
-                ${year}-${month}-${dayNum}
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item container-fluid">
-                    <div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
-                    <div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
-                </li>
-                <li class="list-group-item">
-                    <p>Description: <span class="font-weight-bold">${description}</span></p>
-                    <p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
-                </li>
-                <li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
-                <li class="list-group-item">Pressure: <span class="font-weight-bold">${pressure} hpa</span></li>
-            </ul>
-        </div>
+			<div class="card shadow px-0">
+            	<div class="card-header text-center">
+                	${year}-${month}-${dayNum}
+            	</div>
+            	<ul class="list-group list-group-flush">
+                	<li class="list-group-item container-fluid">
+                    	<div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
+                    	<div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
+                	</li>
+                	<li class="list-group-item">
+                    	<p>Description: <span class="font-weight-bold">${description}</span></p>
+                    	<p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
+                	</li>
+                	<li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
+                	<li class="list-group-item">Pressure: <span class="font-weight-bold">${pressure} hpa</span></li>
+            	</ul>
+        	</div>
 				`);
+			if (index === 0){
+				$('#second-card-container').append(`
+			<div class="carousel-item active">
+            	<div class="card shadow px-0">
+            		<div class="card-header text-center">
+                		${year}-${month}-${dayNum}
+            		</div>
+            		<ul class="list-group list-group-flush">
+                		<li class="list-group-item container-fluid">
+                    		<div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
+                    		<div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
+                		</li>
+                		<li class="list-group-item">
+                    		<p>Description: <span class="font-weight-bold">${description}</span></p>
+                    		<p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
+                		</li>
+                		<li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
+                		<li class="list-group-item">Pressure: <span class="font-weight-bold">${pressure} hpa</span></li>
+            		</ul>
+        		</div>
+            </div>`)
+			}
+			$('#second-card-container').append(`
+			<div class="carousel-item">
+            	<div class="card shadow px-0">
+            		<div class="card-header text-center">
+                		${year}-${month}-${dayNum}
+            		</div>
+            		<ul class="list-group list-group-flush">
+                		<li class="list-group-item container-fluid">
+                    		<div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
+                    		<div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
+                		</li>
+                		<li class="list-group-item">
+                    		<p>Description: <span class="font-weight-bold">${description}</span></p>
+                    		<p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
+                		</li>
+                		<li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
+                		<li class="list-group-item">Pressure: <span class="font-weight-bold">${pressure} hpa</span></li>
+            		</ul>
+        		</div>
+            </div>
+			`)
 
 		})
 	}
 
 
 	//Random event driven functions below
+
+	//Add feature to button to remove markers from map
+	function removeMarkers() {
+		$('#hide').click(function () {
+			$('.mapboxgl-marker').remove()
+		})
+	}
+
+	removeMarkers()
 
 	//Gets lnglat from map after zoom ends to pass to weather api
 	function getLnglatAfterMapZoomEnds() {
@@ -120,6 +173,7 @@
 			sendQueryToOpenWeather(center);
 		})
 	}
+
 	getLnglatAfterMapZoomEnds()
 
 	//On click of map point, get coords and send to open weather api for weather info of location clicked on
@@ -138,6 +192,7 @@
 			sendQueryToOpenWeather(markerCenter)
 		})
 	}
+
 	latLonOnClick()
 
 	//If marker is dragged call open weather api with updated location of marker

@@ -7,9 +7,24 @@
     margin-top: 1.5em;
 }
 
+#blue-bar {
+    position: absolute;
+    height: 3.4em;
+    width: 100vw;
+    z-index: -1000;
+}
+
 @media (max-width: 388px){
     .nav{
         margin: 0 auto;
+    }
+
+    #place-p-tag {
+        display: none;
+    }
+
+    #geocoder {
+        margin-top: 1em;
     }
 }
 
@@ -19,5 +34,20 @@
     }
     .card {
         margin: 1.5em auto;
+    }
+    #hide {
+        display: none;
+    }
+}
+
+@media (max-width: 864px){
+    #card-container {
+        display: none;
+    }
+}
+
+@media (min-width: 864px){
+    #carouselExampleControls {
+        display: none;
     }
 }
