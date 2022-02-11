@@ -14,9 +14,14 @@
     z-index: -1000;
 }
 
+#tittle:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
 @media (max-width: 388px){
     .nav{
-        margin: 0 auto;
+        justify-content: center;
     }
 
     #place-p-tag {

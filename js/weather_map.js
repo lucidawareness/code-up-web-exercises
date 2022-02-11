@@ -35,8 +35,10 @@
 		$.get(`http://api.openweathermap.org/data/2.5/onecall?lat=${center.lat}&lon=${center.lng}&exclude=hourly,minutely,alerts&units=imperial&appid=${OPEN_WEATHER_APPID}`, {}).done(function (weatherData) {
 			map.setCenter(center);
 			$('#card-container').html(``)
+			$('#second-card-container').html(``)
 			reverseGeocoding(center)
 			populateWeatherCards(weatherData);
+			populateCurrentWeather(weatherData);
 
 		});
 	}
@@ -60,10 +62,21 @@
 		$('#current-location').html(city);
 	}
 
+	function populateCurrentWeather(weatherData) {
+		//Get current temp
+		let temp = weatherData.current.temp;
+		//Sets temp for current center of map
+		$('#current-temp').html(`
+			<p class="mt-3 font-weight-bold">Current Temp: ${temp}°F</p>
+		`)
+
+
+	}
+
 	//Get data from weather api and assigns them to variable then populates div cards with data for each day up to 5 days including current day
 	function populateWeatherCards(weatherData) {
 		let unix_timestamp = weatherData.current.dt;
-		let date = new Date(unix_timestamp * 1000);// console.log(date);
+		let date = new Date(unix_timestamp * 1000);
 
 		let dailyArr = weatherData.daily;
 
@@ -87,7 +100,7 @@
 			let pressure = day.pressure
 
 			let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-
+			//Card row appending
 			$('#card-container').append(`
 			<div class="card shadow px-0">
             	<div class="card-header text-center">
@@ -107,7 +120,9 @@
             	</ul>
         	</div>
 				`);
-			if (index === 0){
+
+			//Carousel appending
+			if (index === 0) {
 				$('#second-card-container').append(`
 			<div class="carousel-item active">
             	<div class="card shadow px-0">
@@ -128,7 +143,7 @@
             		</ul>
         		</div>
             </div>`)
-			}
+			} else {
 			$('#second-card-container').append(`
 			<div class="carousel-item">
             	<div class="card shadow px-0">
@@ -149,7 +164,7 @@
             		</ul>
         		</div>
             </div>
-			`)
+			`)}
 
 		})
 	}
@@ -168,9 +183,11 @@
 
 	//Gets lnglat from map after zoom ends to pass to weather api
 	function getLnglatAfterMapZoomEnds() {
-		map.on('zoomend', function (e) {
-			let center = map.getCenter();
-			sendQueryToOpenWeather(center);
+		geocoder.on('result', function (e) {
+			let center2 = e.result.center;
+			let centerObj = {lat: center2[1], lng: center2[0]}
+			map.jumpTo(centerObj);
+			sendQueryToOpenWeather(centerObj);
 		})
 	}
 
@@ -179,9 +196,9 @@
 	//On click of map point, get coords and send to open weather api for weather info of location clicked on
 	function latLonOnClick() {
 		map.on('click', function (e) {
-			console.log(e.lngLat)
 			// Create a new marker.
-			const marker = new mapboxgl.Marker({
+			$('.mapboxgl-marker').remove();
+			let marker = new mapboxgl.Marker({
 				draggable: true
 			})
 				.setLngLat(e.lngLat)
@@ -200,7 +217,6 @@
 		marker.on('dragend', function () {
 			const lngLat = marker.getLngLat();
 			map.setCenter(lngLat);
-			console.log(lngLat);
 			sendQueryToOpenWeather(lngLat)
 		})
 	}
