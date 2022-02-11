@@ -7,6 +7,12 @@
     margin-top: 1.5em;
 }
 
+@media (max-width: 388px){
+    .nav{
+        margin: 0 auto;
+    }
+}
+
 @media (max-width: 575px){
     #map {
         display: none;

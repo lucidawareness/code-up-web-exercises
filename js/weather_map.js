@@ -88,14 +88,14 @@
 			let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
 			$('#card-container').append(`
-				<div class="card mt-4 ml-3 px-0" style="width: 18rem;">
+				<div class="card px-0">
             <div class="card-header text-center">
                 ${year}-${month}-${dayNum}
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item container-fluid">
                     <div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
-                    <div class="row justify-content-center"><img src="${iconUrl}"></div>
+                    <div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
                 </li>
                 <li class="list-group-item">
                     <p>Description: <span class="font-weight-bold">${description}</span></p>
