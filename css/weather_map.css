@@ -2,3 +2,16 @@
     width: 100vw;
     height: 50vh;
 }
+
+.card {
+    margin-top: 1.5em;
+}
+
+@media (max-width: 575px){
+    #map {
+        display: none;
+    }
+    .card {
+        margin: 1.5em auto;
+    }
+}

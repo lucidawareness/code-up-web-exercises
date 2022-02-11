@@ -88,7 +88,7 @@
 			let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
 			$('#card-container').append(`
-				<div class="card mt-4 ml-3 col-10 col-lg-2 px-0" style="width: 18rem;">
+				<div class="card mt-4 ml-3 px-0" style="width: 18rem;">
             <div class="card-header text-center">
                 ${year}-${month}-${dayNum}
             </div>
