@@ -13,16 +13,20 @@
 	});
 
 	//Creates map box search box
-	const geocoder = new MapboxGeocoder({
-		accessToken: mapboxgl.accessToken,
-		mapboxgl: mapboxgl
-	});
-	//Adds map box search to html
-	document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+	function geoCoder() {
+		const geocoder = new MapboxGeocoder({
+			accessToken: mapboxgl.accessToken,
+			mapboxgl: mapboxgl
+		});
+		//Adds map box search box to html
+		document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+	}
+
+	geoCoder();
 
 	//Called when map finishes loading
 	function onLoadWeatherData() {
-		map.on('load', function (e) {
+		map.on('load', function () {
 			let center = map.getCenter();
 			sendQueryToOpenWeather(center);
 		})
@@ -101,70 +105,76 @@
 
 			let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 			//Card row appending
+			//language=HTML
 			$('#card-container').append(`
-			<div class="card shadow px-0">
-            	<div class="card-header text-center">
-                	${year}-${month}-${dayNum}
-            	</div>
-            	<ul class="list-group list-group-flush">
-                	<li class="list-group-item container-fluid">
-                    	<div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
-                    	<div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
-                	</li>
-                	<li class="list-group-item">
-                    	<p>Description: <span class="font-weight-bold">${description}</span></p>
-                    	<p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
-                	</li>
-                	<li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
-                	<li class="list-group-item">Pressure: <span class="font-weight-bold">${pressure} hpa</span></li>
-            	</ul>
-        	</div>
-				`);
+                <div class="card shadow px-0">
+                    <div class="card-header text-center">
+                        ${year}-${month}-${dayNum}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item container-fluid">
+                            <div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
+                            <div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
+                        </li>
+                        <li class="list-group-item">
+                            <p>Description: <span class="font-weight-bold">${description}</span></p>
+                            <p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
+                        </li>
+                        <li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
+                        <li class="list-group-item">Pressure: <span class="font-weight-bold">${pressure} hpa</span></li>
+                    </ul>
+                </div>
+			`);
 
 			//Carousel appending
 			if (index === 0) {
+				//language=HTML
 				$('#second-card-container').append(`
-			<div class="carousel-item active">
-            	<div class="card shadow px-0">
-            		<div class="card-header text-center">
-                		${year}-${month}-${dayNum}
-            		</div>
-            		<ul class="list-group list-group-flush">
-                		<li class="list-group-item container-fluid">
-                    		<div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
-                    		<div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
-                		</li>
-                		<li class="list-group-item">
-                    		<p>Description: <span class="font-weight-bold">${description}</span></p>
-                    		<p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
-                		</li>
-                		<li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
-                		<li class="list-group-item">Pressure: <span class="font-weight-bold">${pressure} hpa</span></li>
-            		</ul>
-        		</div>
-            </div>`)
+                    <div class="carousel-item active" id="my-carousel">
+                        <div class="card shadow px-0">
+                            <div class="card-header text-center">
+                                ${year}-${month}-${dayNum}
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item container-fluid">
+                                    <div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
+                                    <div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
+                                </li>
+                                <li class="list-group-item">
+                                    <p>Description: <span class="font-weight-bold">${description}</span></p>
+                                    <p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
+                                </li>
+                                <li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
+                                <li class="list-group-item">Pressure: <span
+                                        class="font-weight-bold">${pressure} hpa</span></li>
+                            </ul>
+                        </div>
+                    </div>`)
 			} else {
-			$('#second-card-container').append(`
-			<div class="carousel-item">
-            	<div class="card shadow px-0">
-            		<div class="card-header text-center">
-                		${year}-${month}-${dayNum}
-            		</div>
-            		<ul class="list-group list-group-flush">
-                		<li class="list-group-item container-fluid">
-                    		<div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
-                    		<div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
-                		</li>
-                		<li class="list-group-item">
-                    		<p>Description: <span class="font-weight-bold">${description}</span></p>
-                    		<p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
-                		</li>
-                		<li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
-                		<li class="list-group-item">Pressure: <span class="font-weight-bold">${pressure} hpa</span></li>
-            		</ul>
-        		</div>
-            </div>
-			`)}
+				//language=HTML
+				$('#second-card-container').append(`
+                    <div class="carousel-item">
+                        <div class="card shadow px-0">
+                            <div class="card-header text-center">
+                                ${year}-${month}-${dayNum}
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item container-fluid">
+                                    <div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
+                                    <div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
+                                </li>
+                                <li class="list-group-item">
+                                    <p>Description: <span class="font-weight-bold">${description}</span></p>
+                                    <p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
+                                </li>
+                                <li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
+                                <li class="list-group-item">Pressure: <span
+                                        class="font-weight-bold">${pressure} hpa</span></li>
+                            </ul>
+                        </div>
+                    </div>
+				`)
+			}
 
 		})
 	}
