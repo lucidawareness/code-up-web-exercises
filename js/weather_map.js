@@ -53,9 +53,9 @@
 	function sendQueryToOpenWeather(center) {
 		$.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${center.lat}&lon=${center.lng}&exclude=hourly,minutely,alerts&units=imperial&appid=${OPEN_WEATHER_APPID}`, {}).done(function (weatherData) {
 			map.setCenter(center);
-			$('#card-container').html(``)
-			$('#second-card-container').html(``)
-			reverseGeocoding(center)
+			$('#card-container').html(``);
+			$('#second-card-container').html(``);
+			reverseGeocoding(center);
 			populateWeatherCards(weatherData);
 			populateCurrentWeather(weatherData);
 
@@ -72,6 +72,7 @@
 					city = reverseGeocode.features[i].text
 				}
 			}
+			console.log(city)
 			populateCityName(city);
 		})
 	}
@@ -192,6 +193,7 @@
 				-96.7969,
 				32.7763
 			]);
+			map.setZoom(10);
 			let center = map.getCenter();
 			sendQueryToOpenWeather(center)
 		})
@@ -214,6 +216,7 @@
 			let center2 = e.result.center;
 			let centerObj = {lat: center2[1], lng: center2[0]}
 			map.jumpTo(centerObj);
+			map.setZoom(12)
 			sendQueryToOpenWeather(centerObj);
 		})
 	}
