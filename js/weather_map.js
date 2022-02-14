@@ -13,16 +13,31 @@
 	});
 
 	//Creates map box search box
-	function geoCoder() {
-		const geocoder = new MapboxGeocoder({
-			accessToken: mapboxgl.accessToken,
-			mapboxgl: mapboxgl
-		});
-		//Adds map box search box to html
-		document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+	const geocoder = new MapboxGeocoder({
+		accessToken: mapboxgl.accessToken,
+		mapboxgl: mapboxgl
+	});
+	//Adds map box search box to html
+	document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
+	//Adds navigation controls to map
+	const nav = new mapboxgl.NavigationControl()
+	map.addControl(nav)
+
+	function doDate() {
+		let str = "";
+
+		let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+		let now = new Date();
+
+		str += days[now.getDay()] + ", " + now.getDate() + " " + months[now.getMonth()] + " " + now.getFullYear() + " " + now.toLocaleTimeString('en-US');
+		document.getElementById("todaysDate").innerHTML = str;
 	}
 
-	geoCoder();
+	setInterval(doDate, 1000);
+
 
 	//Called when map finishes loading
 	function onLoadWeatherData() {
@@ -36,7 +51,7 @@
 
 	//Sends center of map to open weather api with value input as param
 	function sendQueryToOpenWeather(center) {
-		$.get(`http://api.openweathermap.org/data/2.5/onecall?lat=${center.lat}&lon=${center.lng}&exclude=hourly,minutely,alerts&units=imperial&appid=${OPEN_WEATHER_APPID}`, {}).done(function (weatherData) {
+		$.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${center.lat}&lon=${center.lng}&exclude=hourly,minutely,alerts&units=imperial&appid=${OPEN_WEATHER_APPID}`, {}).done(function (weatherData) {
 			map.setCenter(center);
 			$('#card-container').html(``)
 			$('#second-card-container').html(``)
@@ -91,7 +106,7 @@
 			unix_timestamp = day.dt;
 			date = new Date(unix_timestamp * 1000);
 			let year = date.getFullYear();
-			let month = date.getMonth();
+			let month = date.getMonth() +1;
 			let dayNum = date.getDate();
 
 
@@ -99,16 +114,23 @@
 			let maxTemp = day.temp.max;
 			let icon = day.weather[0].icon;
 			let description = day.weather[0].description;
+			let words = description.split(" ");
+			for (let i = 0; i < words.length; i++) {
+				words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+			}
+
+			let newWords = words.join(" ");
+
 			let wind = day.wind_speed;
 			let humidity = day.humidity;
 			let pressure = day.pressure
 
-			let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+			let iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 			//Card row appending
 			//language=HTML
 			$('#card-container').append(`
-                <div class="card shadow px-0">
-                    <div class="card-header text-center">
+                <div class="card shadow px-0 text-center">
+                    <div class="card-header">
                         ${year}-${month}-${dayNum}
                     </div>
                     <ul class="list-group list-group-flush">
@@ -117,7 +139,7 @@
                             <div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
                         </li>
                         <li class="list-group-item">
-                            <p>Description: <span class="font-weight-bold">${description}</span></p>
+                            <p>Description: <span class="font-weight-bold">${newWords}</span></p>
                             <p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
                         </li>
                         <li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
@@ -125,58 +147,31 @@
                     </ul>
                 </div>
 			`);
-
 			//Carousel appending
-			if (index === 0) {
-				//language=HTML
-				$('#second-card-container').append(`
-                    <div class="carousel-item active" id="my-carousel">
-                        <div class="card shadow px-0">
-                            <div class="card-header text-center">
-                                ${year}-${month}-${dayNum}
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item container-fluid">
-                                    <div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
-                                    <div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
-                                </li>
-                                <li class="list-group-item">
-                                    <p>Description: <span class="font-weight-bold">${description}</span></p>
-                                    <p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
-                                </li>
-                                <li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
-                                <li class="list-group-item">Pressure: <span
-                                        class="font-weight-bold">${pressure} hpa</span></li>
-                            </ul>
+			//language=HTML
+			$('#second-card-container').append(`
+                <div class="carousel-item" id="my-carousel">
+                    <div class="card shadow px-0 text-center">
+                        <div class="card-header">
+                            ${year}-${month}-${dayNum}
                         </div>
-                    </div>`)
-			} else {
-				//language=HTML
-				$('#second-card-container').append(`
-                    <div class="carousel-item">
-                        <div class="card shadow px-0">
-                            <div class="card-header text-center">
-                                ${year}-${month}-${dayNum}
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item container-fluid">
-                                    <div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
-                                    <div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
-                                </li>
-                                <li class="list-group-item">
-                                    <p>Description: <span class="font-weight-bold">${description}</span></p>
-                                    <p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
-                                </li>
-                                <li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
-                                <li class="list-group-item">Pressure: <span
-                                        class="font-weight-bold">${pressure} hpa</span></li>
-                            </ul>
-                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item container-fluid">
+                                <div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
+                                <div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
+                            </li>
+                            <li class="list-group-item">
+                                <p>Description: <span class="font-weight-bold">${newWords}</span></p>
+                                <p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
+                            </li>
+                            <li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
+                            <li class="list-group-item">Pressure: <span
+                                    class="font-weight-bold">${pressure} hpa</span></li>
+                        </ul>
                     </div>
-				`)
-			}
-
+                </div>`);
 		})
+		$('#my-carousel').first().addClass('active');
 	}
 
 
@@ -185,11 +180,33 @@
 	//Add feature to button to remove markers from map
 	function removeMarkers() {
 		$('#hide').click(function () {
-			$('.mapboxgl-marker').remove()
+			$('.mapboxgl-marker').remove();
 		})
 	}
 
 	removeMarkers()
+
+	function centerMap() {
+		$('#recenter').click(function () {
+			map.setCenter([
+				-96.7969,
+				32.7763
+			]);
+			let center = map.getCenter();
+			sendQueryToOpenWeather(center)
+		})
+	}
+
+	centerMap();
+
+	function reloadOnTitleClick() {
+		$('#title').click(function () {
+			let center = map.getCenter();
+			sendQueryToOpenWeather(center);
+		})
+	}
+
+	reloadOnTitleClick();
 
 	//Gets lnglat from map after zoom ends to pass to weather api
 	function getLnglatAfterMapZoomEnds() {
@@ -201,7 +218,7 @@
 		})
 	}
 
-	getLnglatAfterMapZoomEnds()
+	getLnglatAfterMapZoomEnds();
 
 	//On click of map point, get coords and send to open weather api for weather info of location clicked on
 	function latLonOnClick() {
@@ -216,7 +233,7 @@
 			map.setCenter(e.lngLat);
 			afterDropCoords(marker);
 			let markerCenter = map.getCenter();
-			sendQueryToOpenWeather(markerCenter)
+			sendQueryToOpenWeather(markerCenter);
 		})
 	}
 
@@ -227,7 +244,7 @@
 		marker.on('dragend', function () {
 			const lngLat = marker.getLngLat();
 			map.setCenter(lngLat);
-			sendQueryToOpenWeather(lngLat)
+			sendQueryToOpenWeather(lngLat);
 		})
 	}
 

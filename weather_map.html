@@ -22,28 +22,35 @@
 <div id="blue-bar" class="bg-primary"></div>
 <nav class="bg-primary container-fluid container-xl">
     <div class="row align-items-baseline justify-content-sm-between justify-content-center">
-        <h2 class="py-2 pl-2 text-white nav" id="tittle">Weather App</h2>
+        <h2 class="py-2 pl-2 text-white nav" id="title">Weather App</h2>
         <p class="px-2 py-2 text-white nav font-weight-bold">Current Location:<span class="ml-2 pr-2" id="current-location"></span></p>
     </div>
 </nav>
 <header class="container-fluid">
     <!--    Header col-->
+    <div class="row justify-content-center mt-3">
+        <h3 id="todaysDate" class="text-center"></h3>
+    </div>
     <div class="row justify-content-center align-items-baseline">
         <p class="mt-4 ml-4" id="place-p-tag">Place</p>
-        <div class="ml-3" type="search" id="geocoder"></div>
+        <div class="justify-content-center" type="search" id="geocoder"></div>
     </div>
     <div class="row justify-content-center" id="current-temp">
 
     </div>
 
+    <div class="row justify-content-center font-weight-bold">
+        <h4>5 Day Forecast</h4>
+    </div>
+
     <!--    Card container-->
-    <div class="container">
-        <div class="row justify-content-center" >
+    <div class="container px-0">
+        <div class="row justify-content-center">
             <div class="card-deck" id="card-container">
             </div>
         </div>
         <div id="carouselExampleControls" class="carousel slide justify-content-center row mx-4" data-ride="carousel">
-            <ol class="carousel-indicators">
+            <ol class="carousel-indicators d-none">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
@@ -67,12 +74,13 @@
 
 </header>
 <!--    Map container-->
-<div class="container">
-    <div class="row container-xl mx-auto">
-        <div id='map' class="my-4 mx-3 shadow"></div>
+<div class="container-md container-fluid">
+    <div class="row justify-content-center mt-3">
+        <button id="hide" class="btn btn-primary mr-1 my-2">Remove Marker</button>
+        <button id="recenter" class="btn btn-primary ml-1 my-2">Recenter map</button>
     </div>
-    <div class="row justify-content-center">
-        <button id="hide" class="btn btn-primary my-2">Remove Marker</button>
+    <div class="row container-fluid container-xl mx-auto">
+        <div id='map' class="my-4 mx-3 shadow"></div>
     </div>
 </div>
 

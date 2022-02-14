@@ -35,23 +35,23 @@
 
 @media (max-width: 575px){
     #map {
-        display: none;
+        /*display: none;*/
     }
     .card {
         margin: 1.5em auto;
     }
     #hide {
-        display: none;
+        /*display: none;*/
     }
 }
 
-@media (max-width: 864px){
+@media (max-width: 991px){
     #card-container {
         display: none;
     }
 }
 
-@media (min-width: 864px){
+@media (min-width: 992px){
     #carouselExampleControls {
         display: none;
     }
