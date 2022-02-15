@@ -24,6 +24,7 @@
 	const nav = new mapboxgl.NavigationControl()
 	map.addControl(nav)
 
+	//Formats date and adds to element in HTML
 	function doDate() {
 		let str = "";
 
@@ -36,6 +37,7 @@
 		document.getElementById("todaysDate").innerHTML = str;
 	}
 
+	//Updates time every second
 	setInterval(doDate, 1000);
 
 
@@ -72,7 +74,6 @@
 					city = reverseGeocode.features[i].text
 				}
 			}
-			console.log(city)
 			populateCityName(city);
 		})
 	}
@@ -80,16 +81,21 @@
 	//Sets current city name in span top right corner of screen
 	function populateCityName(city) {
 		$('#current-location').html(city);
+		$('#current-location-map').html(city);
 	}
 
 	function populateCurrentWeather(weatherData) {
 		//Get current temp
-		let temp = weatherData.current.temp;
+		let currentTemp = weatherData.current.temp;
+		let currentFeelsLike = weatherData.current.feels_like;
 		//Sets temp for current center of map
 		$('#current-temp').html(`
-			<p class="mt-3 font-weight-bold">Current Temp: ${temp}°F</p>
+			<p class="mt-3 font-weight-bold text-center">Current Temp: ${currentTemp}°F</p>
 		`)
 
+		$('#current-feels-like').html(`
+			<p class="font-weight-bold text-center">Feels Like: ${currentFeelsLike}°F</p>
+		`)
 
 	}
 
@@ -99,34 +105,37 @@
 		let date = new Date(unix_timestamp * 1000);
 
 		let dailyArr = weatherData.daily;
-
+		//Loop through daily data from openWeather API
 		dailyArr.forEach(function (day, index) {
 			if (index > 4) {
 				return
 			}
+			//Converts unix to JS date
 			unix_timestamp = day.dt;
 			date = new Date(unix_timestamp * 1000);
 			let year = date.getFullYear();
-			let month = date.getMonth() +1;
+			let month = date.getMonth() + 1;
 			let dayNum = date.getDate();
 
-
+			//Gets weather details for current iteration of days
 			let minTemp = day.temp.min;
 			let maxTemp = day.temp.max;
 			let icon = day.weather[0].icon;
 			let description = day.weather[0].description;
-			let words = description.split(" ");
-			for (let i = 0; i < words.length; i++) {
-				words[i] = words[i][0].toUpperCase() + words[i].substr(1);
-			}
-
-			let newWords = words.join(" ");
-
 			let wind = day.wind_speed;
 			let humidity = day.humidity;
 			let pressure = day.pressure
 
 			let iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+
+
+			//Get uncapitalized description and capitalize first letter in each word
+			let words = description.split(" ");
+			for (let i = 0; i < words.length; i++) {
+				words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+			}
+			let descriptionCapitalized = words.join(" ");
+
 			//Card row appending
 			//language=HTML
 			$('#card-container').append(`
@@ -140,15 +149,15 @@
                             <div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
                         </li>
                         <li class="list-group-item">
-                            <p>Description: <span class="font-weight-bold">${newWords}</span></p>
+                            <p>Description<br> <span class="font-weight-bold">${descriptionCapitalized}</span></p>
                             <p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
                         </li>
-                        <li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
-                        <li class="list-group-item">Pressure: <span class="font-weight-bold">${pressure} hpa</span></li>
+                        <li class="list-group-item">Wind: <span class="font-weight-bold">${wind} Mph</span></li>
+                        <li class="list-group-item">Pressure: <span class="font-weight-bold">${pressure} Hpa</span></li>
                     </ul>
                 </div>
 			`);
-			//Carousel appending
+			//Carousel appending for smaller screens
 			//language=HTML
 			$('#second-card-container').append(`
                 <div class="carousel-item" id="my-carousel">
@@ -162,16 +171,17 @@
                                 <div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
                             </li>
                             <li class="list-group-item">
-                                <p>Description: <span class="font-weight-bold">${newWords}</span></p>
+                                <p>Description<br><span class="font-weight-bold">${descriptionCapitalized}</span></p>
                                 <p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
                             </li>
-                            <li class="list-group-item">Wind: <span class="font-weight-bold">${wind}mph</span></li>
+                            <li class="list-group-item">Wind: <span class="font-weight-bold">${wind} Mph</span></li>
                             <li class="list-group-item">Pressure: <span
                                     class="font-weight-bold">${pressure} hpa</span></li>
                         </ul>
                     </div>
                 </div>`);
 		})
+		//Adds necessary active class for first carousel item
 		$('#my-carousel').first().addClass('active');
 	}
 
@@ -185,8 +195,9 @@
 		})
 	}
 
-	removeMarkers()
+	removeMarkers();
 
+	//On button click map centers to clicked point of map and sets zoom to 10 which then sends coords to query open weather API
 	function centerMap() {
 		$('#recenter').click(function () {
 			map.setCenter([
@@ -201,6 +212,7 @@
 
 	centerMap();
 
+	//On title click get current center of map and updates data from Open weather API
 	function reloadOnTitleClick() {
 		$('#title').click(function () {
 			let center = map.getCenter();
@@ -210,7 +222,7 @@
 
 	reloadOnTitleClick();
 
-	//Gets lnglat from map after zoom ends to pass to weather api
+	//Gets coords from map after geocoder search returns results to pass to weather api
 	function getLnglatAfterMapZoomEnds() {
 		geocoder.on('result', function (e) {
 			let center2 = e.result.center;
