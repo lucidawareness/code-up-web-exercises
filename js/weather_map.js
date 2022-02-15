@@ -131,21 +131,22 @@
 			//Card row appending
 			//language=HTML
 			$('#card-container').append(`
-                <div class="card shadow px-0 text-center">
+                <div class="card shadow px-0 text-center card-row">
                     <div class="card-header">
                         ${year}-${month}-${dayNum}
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item container-fluid">
-                            <div class="row justify-content-center">${minTemp}°F / ${maxTemp}°F</div>
+                            <div class="row justify-content-center">High: ${maxTemp}°F</div>
+                            <div class="row justify-content-center">Low: ${minTemp}°F</div>
                             <div class="row justify-content-center"><img alt="" src="${iconUrl}"></div>
                         </li>
                         <li class="list-group-item">
                             <p>Description<br> <span class="font-weight-bold">${descriptionCapitalized}</span></p>
-                            <p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
+                            <p class="mb-0">Humidity<br> <span class="font-weight-bold">${humidity}%</span></p>
                         </li>
-                        <li class="list-group-item">Wind: <span class="font-weight-bold">${wind} Mph</span></li>
-                        <li class="list-group-item">Pressure: <span class="font-weight-bold">${pressure} Hpa</span></li>
+                        <li class="list-group-item">Wind<br> <span class="font-weight-bold">${wind} Mph</span></li>
+                        <li class="list-group-item">Pressure<br> <span class="font-weight-bold">${pressure} Hpa</span></li>
                     </ul>
                 </div>
 			`);
@@ -164,11 +165,10 @@
                             </li>
                             <li class="list-group-item">
                                 <p>Description<br><span class="font-weight-bold">${descriptionCapitalized}</span></p>
-                                <p class="mb-0">Humidity: <span class="font-weight-bold">${humidity}%</span></p>
+                                <p class="mb-0">Humidity<br> <span class="font-weight-bold">${humidity}%</span></p>
                             </li>
-                            <li class="list-group-item">Wind: <span class="font-weight-bold">${wind} Mph</span></li>
-                            <li class="list-group-item">Pressure: <span
-                                    class="font-weight-bold">${pressure} hpa</span></li>
+                            <li class="list-group-item">Wind<br> <span class="font-weight-bold">${wind} Mph</span></li>
+                            <li class="list-group-item">Pressure<br> <span class="font-weight-bold">${pressure} hpa</span></li>
                         </ul>
                     </div>
                 </div>`);

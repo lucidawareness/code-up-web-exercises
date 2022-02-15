@@ -7,6 +7,10 @@
     margin-top: 1.5em;
 }
 
+.card-row {
+    width: 13em;
+}
+
 #blue-bar {
     position: absolute;
     height: 3.4em;
@@ -33,7 +37,7 @@
     }
 }
 
-@media (max-width: 575px){
+@media (max-width: 571px){
     #map {
         /*display: none;*/
     }
@@ -56,3 +60,10 @@
         display: none;
     }
 }
+
+@media (min-width: 576px) and (max-width: 992px) {
+    #second-card-container {
+        width: 25em;
+    }
+}
+/*575 991*/
