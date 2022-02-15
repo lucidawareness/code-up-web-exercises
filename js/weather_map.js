@@ -84,11 +84,6 @@
 		$('#current-temp').html(`
 			<p class="mt-3 font-weight-bold text-center">Current Temp: ${currentTemp}°F | Feels Like: ${currentFeelsLike}°F</p>
 		`)
-
-		$('#current-feels-like').html(`
-			
-		`)
-
 	}
 
 	//Get data from weather api and assigns them to variable then populates div cards with data for each day up to 5 days including current day
