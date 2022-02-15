@@ -82,11 +82,11 @@
 		let currentFeelsLike = weatherData.current.feels_like;
 		//Sets temp for current center of map
 		$('#current-temp').html(`
-			<p class="mt-3 font-weight-bold text-center">Current Temp: ${currentTemp}°F</p>
+			<p class="mt-3 font-weight-bold text-center">Current Temp: ${currentTemp}°F | Feels Like: ${currentFeelsLike}°F</p>
 		`)
 
 		$('#current-feels-like').html(`
-			<p class="font-weight-bold text-center">Feels Like: ${currentFeelsLike}°F</p>
+			
 		`)
 
 	}
@@ -146,7 +146,8 @@
                             <p class="mb-0">Humidity<br> <span class="font-weight-bold">${humidity}%</span></p>
                         </li>
                         <li class="list-group-item">Wind<br> <span class="font-weight-bold">${wind} Mph</span></li>
-                        <li class="list-group-item">Pressure<br> <span class="font-weight-bold">${pressure} Hpa</span></li>
+                        <li class="list-group-item">Pressure<br> <span class="font-weight-bold">${pressure} Hpa</span>
+                        </li>
                     </ul>
                 </div>
 			`);
@@ -168,7 +169,8 @@
                                 <p class="mb-0">Humidity<br> <span class="font-weight-bold">${humidity}%</span></p>
                             </li>
                             <li class="list-group-item">Wind<br> <span class="font-weight-bold">${wind} Mph</span></li>
-                            <li class="list-group-item">Pressure<br> <span class="font-weight-bold">${pressure} hpa</span></li>
+                            <li class="list-group-item">Pressure<br> <span
+                                    class="font-weight-bold">${pressure} hpa</span></li>
                         </ul>
                     </div>
                 </div>`);
