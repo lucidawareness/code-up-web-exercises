@@ -12,6 +12,9 @@
 		]
 	});
 
+	let center = map.getCenter();
+	sendQueryToOpenWeather(center);
+
 	//Creates map box search box
 	const geocoder = new MapboxGeocoder({
 		accessToken: mapboxgl.accessToken,
@@ -39,17 +42,6 @@
 
 	//Updates time every second
 	setInterval(doDate, 1000);
-
-
-	//Called when map finishes loading
-	function onLoadWeatherData() {
-		map.on('load', function () {
-			let center = map.getCenter();
-			sendQueryToOpenWeather(center);
-		})
-	}
-
-	onLoadWeatherData();
 
 	//Sends center of map to open weather api with value input as param
 	function sendQueryToOpenWeather(center) {
