@@ -3,21 +3,26 @@
 
 	let username = "lucidawareness";
 
-	function getGithubUsernames(user) {
-		return fetch(`https://api.github.com/users/${user}/repos`, {headers: {'Authorization': GITHUB_TOKEN}})
-			.then(response => response.json())
-			.catch(err => console.log(err));
+	const getUsersLastRepo = function (username) {
+		return fetch(`https://api.github.com/users/${username}/events`, {headers: { Authorization: `token ${GITHUB_TOKEN}`}})
+			.then(response => {
+				return response.json()
+			})
+			.then(result => {
+				getUsersLastCommitDate(result[0].repo.name)
+			}).catch(err => console.error(err))
 	}
 
-	getGithubUsernames(username).then(users => {
-		let arrDates = [];
-		users.forEach(userObj => {
-			arrDates.push(userObj.pushed_at);
-		});
-		let sortedArrOfDates = arrDates.sort()
-		let arrLength = arrDates.length - 1;
-		console.log(`User ${username} last commit was ${sortedArrOfDates[arrLength]}`);
-	}).catch(err => console.error(err))
+	getUsersLastRepo(username);
+
+	const getUsersLastCommitDate = function (repoName){
+		return fetch(`https://api.github.com/repos/${repoName}/commits`,{headers: { Authorization: `token ${GITHUB_TOKEN}`}})
+			.then(response => {
+				return response.json()
+			}).then(result => {
+				console.log(result[0].commit.author.date);
+			}).catch(err => console.log(err));
+	}
 
 	function waitNSeconds(milliseconds) {
 		const myPromise = new Promise((resolve, reject) => {
@@ -27,8 +32,7 @@
 		})
 	}
 
-	waitNSeconds(3000)
-	waitNSeconds(1000)
-
+	waitNSeconds(3000);
+	waitNSeconds(1000);
 
 })();
