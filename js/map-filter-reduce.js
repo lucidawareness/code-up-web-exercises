@@ -81,4 +81,9 @@
 
 	console.log(`Your instructors are: ${namesInString}`);
 
+	// Bonus
+	// Use .reduce to get the unique list of languages from the list of users.
+
+
+
 })();
