@@ -25,11 +25,11 @@
 	}
 
 	function waitNSeconds(milliseconds) {
-		const myPromise = new Promise((resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			setTimeout(() => {
 				console.log(`You'll see this after ${milliseconds / 1000} second(s)`)
 			}, milliseconds)
-		})
+		});
 	}
 
 	waitNSeconds(3000);
