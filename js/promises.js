@@ -9,6 +9,7 @@
 				return response.json()
 			})
 			.then(result => {
+				// console.log(result)
 				getUsersLastCommitDate(result[0].repo.name)
 			}).catch(err => console.error(err))
 	}
